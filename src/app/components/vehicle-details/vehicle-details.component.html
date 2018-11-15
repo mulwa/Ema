@@ -31,33 +31,34 @@
                   <div class="col-md-6" *ngIf="selectedSeats.length != 0">                 
                   <div class="head-typo typo-com">
                     <form [formGroup]="bookingForm">
-                      <div class="passengerArray" formArrayName="passangers" *ngFor="let seat of selectedSeats">
-                        <fieldset>
-                          <legend> <p class="legend-title">Seat {{seat}} Passenger Details</p> </legend>                        
+                      <div class="passengerArray" formArrayName="passangers" *ngFor="let item of bookingForm.get('passangers').controls; let i = index;" >
+                        <fieldset [formGroupName]="i">
+                          <legend> <p class="legend-title">Seat {{item.get('selected_seat').value}} Passenger Details</p> </legend>                        
                       <div class="row">
                         <div class="input-field col s12">
-                          <input type="text" placeholder="Full name {{seat}}">
+                          <input type="text" formControlName="passenger_name"  placeholder="Full name {{seat}}">
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <input type="text" placeholder="Phone Number">
+                          <input type="text" formControlName="phone_number" placeholder="Phone Number">
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <input type="text" placeholder="ID Number">
+                          <input type="text" formControlName="id_number" placeholder="ID Number">
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <input type="text" placeholder="Email Address">
+                          <input type="text" formControlName="email_address"  placeholder="Email Address">
+                          <input type="text" formControlName="selected_seat" hidden >
                         </div>
                       </div>
                     </fieldset>
                     </div>
                       <div class="row">
-                        <button type="submit" class="form-btn">Book</button>
+                        <button type="submit" class="form-btn" (click)="seerveSeat()">Book</button>
                       </div>                    
                     </form>
                   </div>

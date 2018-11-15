@@ -32,8 +32,10 @@ export class VehicleDetailsComponent implements OnInit {
               private activatedRoute:ActivatedRoute,
              private bookingService:BookingService,
              private fb:FormBuilder) {
+                
 
    }
+   
 
   ngOnInit() {
       this.initializeForm()
@@ -55,8 +57,7 @@ export class VehicleDetailsComponent implements OnInit {
       this.bookingForm = this.fb.group({         
         payment_method:['',Validators.required], 
         reference_number:'red122',   
-        passangers: this.fb.array([this.createItem()])
-          
+        passangers: this.fb.array([])          
       })
   }
 
@@ -76,34 +77,40 @@ export class VehicleDetailsComponent implements OnInit {
   onseatSelection($event){
       let index = this.selectedSeats.indexOf($event);
       if(index == -1){
-          this.selectedSeats.push($event)
-        //   this.addFormField($event)
+          this.selectedSeats.push($event) 
+          this.addFormField($event)     
           
       }else{
           this.selectedSeats.splice(index,1)
           console.log(`Removing Seat ${$event}`)
+          this.passangers.removeAt(index)
+          
       }
       console.log(`Seat Selected ${this.selectedSeats}`)
   }
-//   addFormField(seatNo){
-//     this.passangers = this.bookingForm.get('passangers') as FormArray;    
-//     this.passangers.push(this.createItem(seatNo))  
-//       console.log(`Adding Field for Seat No ${seatNo}`)
+  addFormField(seatNo){
+    this.passangers = this.bookingForm.get('passangers') as FormArray;    
+    this.passangers.push(this.createItem(seatNo))  
+      console.log(`Adding Field for Seat No ${seatNo}`)
       
-//   }
+  }
+  
 
-  createItem(): FormGroup {
+  createItem(seatNo): FormGroup {
     return this.fb.group({          
       phone_number:['',Validators.minLength(10)],
       id_number:[''],
       passenger_name:['',Validators.required],
       email_address:[''],
-      selected_seat: [''],
+      selected_seat: seatNo,
       insurance_charge:'',
       served_by:'Web App',
       amount_charged:'',
       
     });
+  }
+  seerveSeat(){
+      console.log(this.bookingForm.value)
   }
 
 }
