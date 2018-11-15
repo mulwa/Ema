@@ -22,10 +22,25 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
+            "styles": [             
+              "node_modules/materialize-css/dist/css/materialize.min.css",
+              "src/assets/css/materialize.css",
+              "src/assets/css/style.css", 
+              "src/assets/css/bootstrap.css",
+              "src/assets/css/responsive.css",                           
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/js/jquery.min.js",
+              "node_modules/materialize-css/dist/js/materialize.min.js",              
+              "src/assets/js/jquery-ui.js",
+              "src/assets/js/angular.min.js",
+              "src/assets/js/bootstrap.js",
+              "src/assets/js/materialize.min.js",
+              "src/assets/js/jquery.mixitup.min.js",
+              "src/assets/js/custom.js"
+            ]
           },
           "configurations": {
             "production": {

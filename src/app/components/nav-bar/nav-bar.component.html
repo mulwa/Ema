@@ -1,0 +1,41 @@
+<div class="menu-section">
+  <div class="container">
+    <div class="row">
+      <div class="top-bar">
+        <ul>
+          <li><a  [routerLink]="['/myaccount']" routerLinkActive="router-link-active"   href='#' > My Account</a>
+          </li>
+          <li><a [routerLink]="['/offices']" routerLinkActive="router-link-active"  href="#">Our Offices</a>
+          </li>
+          <li><a [routerLink]="['/about']" routerLinkActive="router-link-active"  href="#">About Us</a>
+          </li>														
+          <li><a> Call: 041226620</a>
+          </li>
+        </ul>
+      </div>      
+    </div>
+    <div class="row">
+      <div class="logo">
+        <a href="#"><img src="/assets/images/logo.png" alt="" />
+        </a>
+      </div>
+      <div class="menu-bar">
+        <ul>
+          <li><a routerLink="/home" href="#" class='dropdown-button'>Home</a></li>															
+          <li>
+            <a [routerLink]="['/booking']" routerLinkActive="router-link-active"  href="#" class='dropdown-button' >Booking </a>
+          </li>          													
+          <li>
+            <a [routerLink]="['/fare']" routerLinkActive="router-link-active"  class='dropdown-button' href="#" class='dropdown-button'> Fares </a>
+          </li>
+          <li>
+            <a [routerLink]="['/fleet']" routerLinkActive="router-link-active"  class='dropdown-button' href="#" class='dropdown-button'> Fleet </a>
+          </li>
+          <li>
+            <a [routerLink]="['/offices']" routerLinkActive="router-link-active"  class='dropdown-button' href="#" class='dropdown-button'>Offices</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

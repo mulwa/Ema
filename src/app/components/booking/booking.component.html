@@ -1,0 +1,54 @@
+<div class="inn-body-section inn-booking">
+    <div class="container">
+      <div class="row">
+        <!--TYPOGRAPHY SECTION-->
+        <div class="col-md-6">
+          <div class="book-title">
+            <h2>Buses & Shuttles</h2>
+            <p>Book and manage your bus and shuttle tickets
+               anytime, anywhere using the new and 
+              enhanced ENA Coach service</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="book-form inn-com-form">
+            <form [formGroup]="bookForm" class="col s12" (ngSubmit)="searchVehicle()"> 
+              <div class="row">
+                <mz-select-container class="col s12">
+                  <select mz-select
+                    formControlName="from"
+                    placeholder="Travel From">                    
+                    <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>       
+                  </select>
+                </mz-select-container>                
+              </div>
+              <div class="row">
+                  <mz-select-container class="input-field col s12">
+                    <select mz-select
+                      formControlName="to_id"
+                      placeholder="Traveling To">                      
+                      <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>  
+                    </select>
+                  </mz-select-container >                
+                </div>
+              <div class="row">
+                <mz-select-container class="input-field col s12">
+                  <select mz-select
+                    formControlName="travel_date"
+                    placeholder="Traveling Date">
+                    <option *ngFor="let date of traveling_dates" [value]="date.name">{{date.name}}</option>  
+                  </select>                  
+                </mz-select-container>                
+              </div>              
+              <div class="row">
+                <div class="input-field col s12">                  
+                  <button type="submit" class="form-btn" [disabled]="!bookForm.valid">Search Vehicles</button>
+                 </div>
+              </div>              
+            </form>
+          </div>
+        </div>
+        <!--END TYPOGRAPHY SECTION-->
+      </div>
+    </div>
+  </div>

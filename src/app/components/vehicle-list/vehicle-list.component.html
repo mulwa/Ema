@@ -1,0 +1,58 @@
+<div class="inn-body-section pad-bot-55">
+<div class="container">
+<div class="alert alert-info alert-dismissable" *ngIf="availableBuses?.length ==0">
+   <a href="#" class="close" data-dismiss="alert" aria-label="close">X</a> <strong>Error!</strong>
+    No Vehicles Available Matching Your Query
+</div>
+<app-loading *ngIf="showloading"></app-loading>
+
+<div class="row" *ngIf="availableBuses?.length > 0">
+    <div class="page-head">
+        <h2>{{traveling_from | uppercase}} TO {{traveling_to | uppercase}} On {{travel_date}}</h2>
+        <div class="head-title">
+          <div class="hl-1"></div>
+          <div class="hl-2"></div>
+          <div class="hl-3"></div>
+        </div>
+      <p></p>
+      </div>
+<div class="room" *ngFor="let bus of availableBuses">
+    <div class="ribbon ribbon-top-left">
+      <span *ngIf="bus.total_seats > 12">Bus</span>
+      <span *ngIf="bus.total_seats <= 12">Shuttle</span>
+    </div>
+    <!--ROOM IMAGE-->
+    <div class="r1 r-com">
+      <img *ngIf="bus.total_seats <= 12" src="/assets/images/vehicles/shuttle.jpeg" alt="" />
+      <img *ngIf="bus.total_seats > 12" src="/assets/images/vehicles/bus.jpeg" alt="" />        
+    </div>
+    <!--ROOM RATING-->
+    <div class="r2 r-com">
+      <h4>{{bus.route}}</h4>      
+      <ul>
+        <li>Capacity : {{bus.total_seats}}</li>
+        <li>Depart {{bus.from}}: {{bus.departure_time.split(",")[1]}}</li>
+        
+      </ul>
+    </div>
+    <!--ROOM AMINITIES-->
+    <div class="r3 r-com">
+      <ul *ngFor="let des of bus.destinations">
+        <li>{{des.split("-")[0]}}</li>        
+      </ul>
+    </div>
+    <!--ROOM PRICE-->
+    <div class="r4 r-com">
+      <p>Fare per passenger</p>
+      <p><span class="room-price-1">Ksh. {{bus.price[0].name.split("-")[2]}}</span> 
+      </p>
+      <p>{{bus.price[0].name}}</p>
+    </div>
+    <!--ROOM BOOKING BUTTON-->
+    <div class="r5 r-com">
+      <div class="r2-available">{{bus.seats_available}} seats left</div>
+      <a (click)="openBookingPage(bus)" class="inn-room-book">Book</a> </div>
+  </div>  
+</div>
+</div>
+</div>

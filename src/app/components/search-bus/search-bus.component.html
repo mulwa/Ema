@@ -1,0 +1,44 @@
+<div class="check-available">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="inn-com-form">
+            <form [formGroup]="searchForm" class="col s12" (ngSubmit)="onSearch()">
+              <div class="row">
+                <div class="col s12 avail-title">
+                  <h4>Check Availability</h4> </div>
+              </div>
+              <div class="row">
+                <mz-select-container class="col s12 m4 l3">
+                  <select mz-select
+                    placeholder='Travel from'
+                    formControlName="from">
+                    <option *ngFor="let city of cities" [value]="city.id" >{{city.name}}</option>                     
+                  </select>
+                </mz-select-container>
+                <mz-select-container class="col s12 m4 l3">
+                  <select mz-select
+                    placeholder='Travel To'
+                    formControlName="to_id">
+                    <option *ngFor="let city of cities" [value]="city.id" >{{city.name}}</option>                    
+                  </select>
+                </mz-select-container>
+                
+                <mz-select-container class="col s12 m4 l3">
+                  <select mz-select
+                  placeholder="Traveling Date"
+                  formControlName="travel_date">
+                      <option value="2">2</option>
+                  </select>                  
+                </mz-select-container>                  
+                <div class="input-field col s12 m4 l2">                  
+                  <button type="submit" class="form-btn" [disabled]="!searchForm.valid" >Search</button>
+                 </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

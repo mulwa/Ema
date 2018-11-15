@@ -1,0 +1,85 @@
+<div class="hom-com">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="hp-section">
+            <div class="hp-sub-tit">
+              <h4>
+                <span>{{from_city}} to {{to_city}} on Thursday, November 1, 2018</span>
+              </h4>              
+            </div> 
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="head-typo typo-com">
+                      <h3>{{route}}</h3>
+                      <p>Departing from: {{from_city}}</p>
+                      <p>Departing time: {{travel_date}}</p>
+                      </div>
+                    <div class="head-typo typo-com">
+                       <!-- Generate the seating grid -->
+                       <app-loading *ngIf="loading"></app-loading>                        
+                        <app-foutynine-seater [available_seats]="seatsFound"  *ngIf="seater == 11 && ! loading" (seatSelectionEvent)="onseatSelection($event)" ></app-foutynine-seater>
+                        <app-eleven-seater [available_seats]="seatsFound" *ngIf="seater > 12 && ! loading" (seatSelectionEvent)="onseatSelection($event)" ></app-eleven-seater>
+                    </div>
+                  </div>
+                  <div class="col-md-6" *ngIf="selectedSeats.length == 0">
+                    <div class="head-typo typo-com">
+                      <p>Please Select Seat To Book</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">                 
+                  <div class="head-typo typo-com" *ngFor="let seat of selectedSeats">
+                    <form [formGroup]="bookingForm">
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input type="text" placeholder="Full name {{seat}}">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input type="text" placeholder="Phone Number">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input type="text" placeholder="ID Number">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input type="text" placeholder="Email Address">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <button type="submit">Book</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+            </div>           
+          </div>
+        </div>        
+          
+          
+        
+      </div>
+      <div class="col-md-4">
+        <!--=========================================-->
+        <div class="hp-call hp-right-com">
+          <div class="hp-call-in"> <img src="/assets/images/icon/dbc4.png" alt="">
+            <h3><span>Need Help. Call us!</span> 041226620</h3> <small>We are available 24/7 Monday to Sunday</small> <a href="#">Call Now</a> </div>
+        </div>
+        <!--=========================================-->
+        <!--=========================================-->        
+        <!--=========================================-->
+        <!--=========================================-->
+        <div class="hp-card hp-right-com">
+          <div class="hp-card-in">
+            <h3>We Accept</h3> <span>We Accept All Forms Of Payment</span> <img src="/assets/images/payment.png" alt=""> </div>
+        </div>
+        <!--=========================================-->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+.seat-grid{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(5,1fr);    
+    grid-auto-rows: 5;
+}
+.seat-row{
+    /* background-color: darkgray; */
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 45px;  
+}
+
+.inner-seat-row{    
+    margin: 5px;       
+    color: #ffffff;
+    background-color: rgb(184, 201, 185);
+    cursor: pointer;
+}
+.third_column{
+    align-self: flex-end;
+}
+.fa-couch{
+    font-size: 12px;
+}
+

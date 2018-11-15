@@ -1,0 +1,15 @@
+.seat-grid{
+    display: grid;    
+    grid-template-columns: repeat(3,70px);
+    
+}
+.seat-row{
+    margin: 10px;
+    /* padding: 10px; */
+    background-color: rgb(211, 230, 212);
+    cursor: pointer;
+}
+.fa-couch {
+    color: #ffffff;
+    font-size: 14px;
+}
