@@ -2,7 +2,7 @@ import { from } from 'rxjs';
 import { BookingService } from 'src/app/services/booking.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-vehicle-details',
@@ -23,7 +23,7 @@ export class VehicleDetailsComponent implements OnInit {
   seatsFound:any[]= [];
   loading:boolean = true;
   selectedSeats:any [] = [];
-  meseat:any
+  passangers: FormArray;
 
   
  
@@ -53,14 +53,9 @@ export class VehicleDetailsComponent implements OnInit {
   }
   initializeForm(){
       this.bookingForm = this.fb.group({         
-          phone_number:['', Validators.required],
-          id_number: ['', Validators.required],
-          passenger_name: ['', Validators.required],
-          email_address: ['', Validators.required],
-          selected_seat: [''],
-          insurance_charge:'',
-          served_by: 'Web App',
-          amount_charged:''
+        payment_method:['',Validators.required], 
+        reference_number:'red122',   
+        passangers: this.fb.array([this.createItem()])
           
       })
   }
@@ -82,16 +77,33 @@ export class VehicleDetailsComponent implements OnInit {
       let index = this.selectedSeats.indexOf($event);
       if(index == -1){
           this.selectedSeats.push($event)
-          this.addFormField($event)
-          this.meseat = $event
+        //   this.addFormField($event)
+          
       }else{
           this.selectedSeats.splice(index,1)
           console.log(`Removing Seat ${$event}`)
       }
       console.log(`Seat Selected ${this.selectedSeats}`)
   }
-  addFormField(seatNo){
-      console.log(`Adding Field for Seat No ${seatNo}`)
+//   addFormField(seatNo){
+//     this.passangers = this.bookingForm.get('passangers') as FormArray;    
+//     this.passangers.push(this.createItem(seatNo))  
+//       console.log(`Adding Field for Seat No ${seatNo}`)
+      
+//   }
+
+  createItem(): FormGroup {
+    return this.fb.group({          
+      phone_number:['',Validators.minLength(10)],
+      id_number:[''],
+      passenger_name:['',Validators.required],
+      email_address:[''],
+      selected_seat: [''],
+      insurance_charge:'',
+      served_by:'Web App',
+      amount_charged:'',
+      
+    });
   }
 
 }

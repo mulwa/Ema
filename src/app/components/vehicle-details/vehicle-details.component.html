@@ -28,9 +28,12 @@
                       <p>Please Select Seat To Book</p>
                     </div>
                   </div>
-                  <div class="col-md-6">                 
-                  <div class="head-typo typo-com" *ngFor="let seat of selectedSeats">
+                  <div class="col-md-6" *ngIf="selectedSeats.length != 0">                 
+                  <div class="head-typo typo-com">
                     <form [formGroup]="bookingForm">
+                      <div class="passengerArray" formArrayName="passangers" *ngFor="let seat of selectedSeats">
+                        <fieldset>
+                          <legend> <p class="legend-title">Seat {{seat}} Passenger Details</p> </legend>                        
                       <div class="row">
                         <div class="input-field col s12">
                           <input type="text" placeholder="Full name {{seat}}">
@@ -51,9 +54,11 @@
                           <input type="text" placeholder="Email Address">
                         </div>
                       </div>
+                    </fieldset>
+                    </div>
                       <div class="row">
-                        <button type="submit">Book</button>
-                      </div>
+                        <button type="submit" class="form-btn">Book</button>
+                      </div>                    
                     </form>
                   </div>
                 </div>
