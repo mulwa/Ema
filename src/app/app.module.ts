@@ -24,6 +24,9 @@ import { VehicleListComponent } from './components/vehicle-list/vehicle-list.com
 import { VehicleDetailsComponent } from './components/vehicle-details/vehicle-details.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ElevenSeaterComponent } from './components/seatsFormat/eleven-seater/eleven-seater.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { MpesaCheckoutComponent } from './components/mpesa-checkout/mpesa-checkout.component';
+import { WalletCheckoutComponent } from './components/wallet-checkout/wallet-checkout.component';
 
 
 @NgModule({
@@ -45,7 +48,10 @@ import { ElevenSeaterComponent } from './components/seatsFormat/eleven-seater/el
     VehicleDetailsComponent,
     LoadingComponent,    
     ElevenSeaterComponent,
-    FoutynineSeaterComponent, 
+    FoutynineSeaterComponent,
+    PaymentComponent,
+    MpesaCheckoutComponent,
+    WalletCheckoutComponent, 
     
   ],
   imports: [

@@ -1,0 +1,20 @@
+    <div class="head-typo typo-com collap-expand book-form inn-com-form">      
+      <p>Enter MPESA registered phone number and ensure that the phone is unlocked 
+          and has sufficient funds.You will be prompted to enter your MPESA Pin to complete
+           the transaction.</p>
+      <form [formGroup]="mpesaFrm" (ngSubmit)="processMpesa()">
+          <div class="row">
+              <div class="row">
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" formControlName="mpesa_phone_number" class="form-control" placeholder="MPESA registered phone Number">                  
+                </div>
+              </div>
+              <div class="row">
+                  <div class="input-field col s12">                  
+                    <button type="submit" class="form-btn" [disabled]="!mpesaFrm.valid" >Process Payment</button>
+                   </div>
+              </div> 
+            </div>
+      </form>  
+  </div>

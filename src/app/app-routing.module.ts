@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import {Routes, RouterModule} from  '@angular/router';
 import { OfficesComponent } from './components/offices/offices.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 const routes: Routes = [
   { path: 'booking', component: BookingComponent},
@@ -20,7 +21,9 @@ const routes: Routes = [
   { path: 'fare', component:FareComponent},
   { path: 'fleet', component:FleetComponent},
   { path:'about', component: AboutComponent},
+  { path: 'payment', component:PaymentComponent},
   { path:'**', component:HomeComponent}
+
 ]
 
 @NgModule({

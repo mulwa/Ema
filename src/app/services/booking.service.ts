@@ -9,6 +9,9 @@ import { VehicleDetailsI } from '../models/responseI';
 import { ReferenceRes } from '../models/ReferenceResp';
 import { ReservationRes } from '../models/reservationResponse';
 import { Reservation } from '../models/reservationI';
+import { TicketResponse } from '../models/ticketRes';
+import { mpesaResponse } from '../models/mpesaRes';
+import { responseI } from '../models/response.1';
 
 @Injectable({
   providedIn: 'root'
@@ -117,6 +120,41 @@ export class BookingService {
     }    
     console.log(body)      
     return this.http.post<ReservationRes>(baseUrl,body)
+  }
+  getTicketInfor(phone_number:string){
+    let body = {
+      username:username,
+      api_key:api_key,
+      action:"SearchTicket",
+      identifier:phone_number
+    }  
+    return this.http.post<TicketResponse>(baseUrl,body)
+  }
+  mpesaPayment(referenceNo, phone_number){
+    let body = {
+      username:username,
+      api_key:api_key,
+      action:"AuthorizePayment",
+      payment_method:"3",
+      reference_number:referenceNo,
+      mpesa_phone_number:phone_number
+    }
+    return this.http.post<mpesaResponse>(baseUrl,body)
+    
+  }
+  authorizeJamboPayment(jambopay_username, password, referenceNo){
+    let body = {
+    username:username,
+    api_key:api_key,
+    action:"AuthorizePayment",
+    payment_method:"2",
+    reference_number:referenceNo,
+    jambopay_wallet_username:jambopay_username,
+    jambopay_wallet_password:password
+  }
+  console.log('authorizeJamboPayment value set to server'+JSON.stringify(body))
+  return this.http.post<responseI>(baseUrl,body);
+  
   }
 
 

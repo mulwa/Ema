@@ -30,7 +30,7 @@ export class VehicleDetailsComponent implements OnInit {
 
   constructor(private router:Router,
               private activatedRoute:ActivatedRoute,
-             private bookingService:BookingService,
+             private bookingService:BookingService,        
              private fb:FormBuilder) {                
 
    }
@@ -150,7 +150,8 @@ export class VehicleDetailsComponent implements OnInit {
         let reference_number =  this.bookingForm.get('reference_number').value;        
        
        
-       // reference_number: this.checkOutForm.get('reference_number').value,                      
+       // reference_number: this.checkOutForm.get('reference_number').value,   
+       setTimeout(()=>{                 
          this.bookingService.reserveBooking(from_city, to_city,travel_date,selected_vehicle,seater,selected_ticket_type,selected_seat,payment_method,phone_number,passenger_name, email_address,id_number,insurance_charge,served_by,amount_charged,reference_number).subscribe(data =>{
            console.log(data)                         
            if(data.ticket[0].response_code == "0"){                    
@@ -159,6 +160,8 @@ export class VehicleDetailsComponent implements OnInit {
              let tick_message = data.ticket_message[0].name;
              let reference_no = data.ticket[0].reference_number             
              console.log("Reference NO"+reference_no);
+             this.router.navigate(['/payment',{ref_no:reference_no}])
+             
              this.bookingForm.reset();
 
              console.log(tick_message)
@@ -170,7 +173,9 @@ export class VehicleDetailsComponent implements OnInit {
            }
          },error =>{           
            console.log('an  error has occured'+error);
-         })      
+         }) 
+
+        },3000)      
        
      } // end of for loop  
   }

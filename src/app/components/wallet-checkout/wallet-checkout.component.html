@@ -1,0 +1,25 @@
+<div class="head-typo typo-com collap-expand book-form inn-com-form">      
+    <p>Enter your wallet pin. Don't have a ENA Coach wallet? No problem. dial *615# or *805#, create a wallet, 
+      set your pin and enter the pin you will set here and start earning points each time you book and pay!</p>
+    <form  [formGroup]="jamboPayFrm" (ngSubmit)="processWallet()">
+        <div class="row">
+            <div class="row">
+              <div class="form-group">
+                  <label>Wallet Username</label>
+                  <input type="text" class="form-control" formControlName="username" placeholder="Wallet Username">                  
+              </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label>Wallet Password</label>
+                    <input type="password" class="form-control" formControlName="password" placeholder="Wallet Password">                  
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">                  
+                  <button type="submit" class="form-btn" >Process Payment</button>
+                 </div>
+            </div> 
+          </div>
+    </form>  
+</div>
