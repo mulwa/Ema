@@ -18,13 +18,13 @@ export class BookingComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
      private bookService:BookingService, private router:Router) { 
+      this.getCities();
 
   }
 
   ngOnInit() {
-    this.initializeForm()
-    this.getCities()
-    this.getTravelingDates()
+    this.initializeForm()    
+    this.getTravelingDates();
   }
   initializeForm(){
     this.bookForm = this.fb.group({
@@ -43,8 +43,8 @@ export class BookingComponent implements OnInit {
     })
   }
   getCities(){
-    this.bookService.getCitites().subscribe(data =>{
-      this.cities = data.cities;
+    this.bookService.getCitites().subscribe(res =>{
+      this.cities = res.cities;
       console.log(`${this.cities}`)
     }, error =>{
       console.log(`Error Occured Fetching Cities ${error.message}`)

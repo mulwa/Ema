@@ -43,7 +43,7 @@ initializeSeater49():void{
     this.seater_49_seats = this.fifth_row.concat(this.first_row,this.third_row,this.fourth_row,this.fifth_row);
     
   }
-  seatSelected(seatNo){
+  seatSelected(seatNo){ 
       console.log(`Seat cliked is ${seatNo}`);
       let index = this.selected_seats.indexOf(seatNo)
       console.log(`selected seat index ${index}`)

@@ -23,7 +23,6 @@
               "src/assets"
             ],
             "styles": [             
-              "node_modules/materialize-css/dist/css/materialize.min.css",
               "src/assets/css/materialize.css",
               "src/assets/css/style.css", 
               "src/assets/css/bootstrap.css",

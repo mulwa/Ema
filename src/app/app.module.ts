@@ -27,6 +27,8 @@ import { ElevenSeaterComponent } from './components/seatsFormat/eleven-seater/el
 import { PaymentComponent } from './components/payment/payment.component';
 import { MpesaCheckoutComponent } from './components/mpesa-checkout/mpesa-checkout.component';
 import { WalletCheckoutComponent } from './components/wallet-checkout/wallet-checkout.component';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 
 @NgModule({
@@ -61,7 +63,9 @@ import { WalletCheckoutComponent } from './components/wallet-checkout/wallet-che
     FormsModule,
     MzInputModule,
     MzSelectModule,
-    AppRoutingModule
+    AppRoutingModule,
+    Ng4LoadingSpinnerModule.forRoot(),
+    FlashMessagesModule.forRoot() 
   ],
   providers: [BookingService],
   bootstrap: [AppComponent]

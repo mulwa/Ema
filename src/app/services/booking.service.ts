@@ -51,6 +51,16 @@ export class BookingService {
     }
     return this.http.post<AvailableBusResponse>(baseUrl,body);
   }
+  getVehicleSchedule(travel_date:string){
+    let body = {
+      username: username,
+      api_key: api_key,
+      action:"Schedule",
+      hash:hash,          
+      travel_date:travel_date,               
+    }
+    return this.http.post<AvailableBusResponse>(baseUrl,body);
+  }
   getVehicleDetails(from:number,to_id:number, travel_date:string,selected_vehicle:number){
     let body = {
       username: username,

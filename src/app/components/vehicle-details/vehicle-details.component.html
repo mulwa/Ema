@@ -28,7 +28,8 @@
                       <p>Please Select Seat To Book</p>
                     </div>
                   </div>
-                  <div class="col-md-6" *ngIf="selectedSeats.length != 0">                 
+                  <div class="col-md-6" *ngIf="selectedSeats.length != 0"> 
+                  <flash-messages></flash-messages>	                
                   <div class="head-typo typo-com">
                     <form [formGroup]="bookingForm">
                       <div class="passengerArray" formArrayName="passangers" *ngFor="let item of bookingForm.get('passangers').controls; let i = index;" >

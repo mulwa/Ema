@@ -20,23 +20,15 @@
       <div class="row inn-page-com">        
         <!--SERVICES SECTION-->
         <div class="col-md-12">
-          <div class="row">
-            <div class="res-menu"> <img src="/assets/images/menu/1.jpg" alt="" />
-              <h3>salted fried chicken <span>$45</span></h3> <span class="menu-item">Tomato soup with croutons, small ceasar salad, apple juice</span> </div>
-            <div class="res-menu"> <img src="/assets/images/menu/2.jpg" alt="" />
-              <h3>salted fried chicken <span>$64</span></h3> <span class="menu-item">Tomato soup with croutons, small ceasar salad, apple juice</span> </div>
-            <div class="res-menu"> <img src="/assets/images/menu/3.jpg" alt="" />
-              <h3>salted fried chicken <span>$45</span></h3> <span class="menu-item">Tomato soup with croutons, small ceasar salad, apple juice</span> </div>
-            <div class="res-menu"> <img src="/assets/images/menu/4.jpg" alt="" />
-              <h3>salted fried chicken <span>$64</span></h3> <span class="menu-item">Tomato soup with croutons, small ceasar salad, apple juice</span> </div>
-            <div class="res-menu"> <img src="/assets/images/menu/5.jpg" alt="" />
-              <h3>salted fried chicken <span>$45</span></h3> <span class="menu-item">Tomato soup with croutons, small ceasar salad, apple juice</span> </div>
-            <div class="res-menu"> <img src="/assets/images/menu/6.jpg" alt="" />
-              <h3>salted fried chicken <span>$64</span></h3> <span class="menu-item">Tomato soup with croutons, small ceasar salad, apple juice</span> </div>
-            <div class="res-menu"> <img src="/assets/images/menu/7.jpg" alt="" />
-              <h3>salted fried chicken <span>$45</span></h3> <span class="menu-item">Tomato soup with croutons, small ceasar salad, apple juice</span> </div>
-            <div class="res-menu"> <img src="/assets/images/menu/8.jpg" alt="" />
-              <h3>salted fried chicken <span>$64</span></h3> <span class="menu-item">Tomato soup with croutons, small ceasar salad, apple juice</span> </div>
+          <div class="row" >
+              <app-loading *ngIf="loading"></app-loading>  
+          </div>
+          <div class="row" *ngFor="let bus of availableBuses">
+            <div class="res-menu"> 
+              <img src="/assets/images/menu/1.jpg" alt="" />
+              <h3>{{bus.route}} <span>Ksh {{bus.price[0].name.split('-')[2]}}</span></h3> 
+              <span class="menu-item">{{bus.destinations}}</span>
+            </div>            
           </div>
         </div>
         <!--END SERVICES SECTION-->        
