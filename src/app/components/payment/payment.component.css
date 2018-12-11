@@ -1,3 +1,7 @@
 .pay-icon{
     height: 50px;
 }
+.list-group-item{
+    margin-top: 5px;
+    cursor: pointer;
+}

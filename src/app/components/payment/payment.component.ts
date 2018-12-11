@@ -11,7 +11,9 @@ import { Ticket } from 'src/app/models/ticketRes';
 })
 export class PaymentComponent implements OnInit {
   reference_no:any;
-  mytickets:Ticket[]
+  mytickets:Ticket[];
+  showMpesa:boolean = true;
+  showJamboPay:boolean = false;
 
   constructor(private activatedRouter: ActivatedRoute, private bookingService:BookingService) { }
 
@@ -27,6 +29,26 @@ export class PaymentComponent implements OnInit {
       console.log(this.mytickets)
 
     })
+  }
+  showMpesaWidget(){    
+    if(this.showMpesa){
+      this.showMpesa = false;      
+    }else{
+      this.showMpesa = true;
+      this.showJamboPay = false;
+    }
+    // console.log(this.showMpesa)
+   
+
+  }
+  showJamboPayWidget(){    
+    if(this.showJamboPay){
+      this.showJamboPay = false      
+    }else{
+      this.showJamboPay = true;
+      this.showMpesa = false;
+    }
+
   }
   
 

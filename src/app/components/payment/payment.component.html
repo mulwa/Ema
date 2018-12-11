@@ -34,33 +34,28 @@
                     </div>                    
               </div>
             </div>
-            <flash-messages></flash-messages>		
-            <div class="hp-section">                
-                <div class="head-typo typo-com collap-expand">
-                    <h2>Select Payment Method</h2>                    
-                    <ul class="collapsible" data-collapsible="accordion">
-                      <li>
-                        <div class="collapsible-header"><i class="material-icons"></i> <img class="pay-icon" src="/assets/img/portfolios/logo/mpesa.png" alt="" srcset=""> </div>
-                        <div class="collapsible-body">                          
-                          <app-mpesa-checkout [mpesaReference]="reference_no"></app-mpesa-checkout> 
-                        </div>
-                      </li> 
-                      <li>
-                          <div class="collapsible-header"><i class="material-icons"></i><img class="pay-icon" src="/assets/img/portfolios/logo/jambopay.png" alt="" srcset=""></div>
-                          <div class="collapsible-body">
-                            <span></span>
-                            <app-wallet-checkout [mpesaReference]="reference_no"></app-wallet-checkout>
-                          </div>
-                        </li>
-                      <li>
-                        <div class="collapsible-header"><i class="material-icons"></i><img class="pay-icon" src="/assets/img/portfolios/logo/airtel_money.png" alt="" srcset=""></div>
-                        <div class="collapsible-body">
-                          <span> ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
-                        </div>
-                      </li>                      
+            <flash-messages></flash-messages>
+            <div class="hp-section">
+                <h2>Select Payment Method</h2> 
+                <hr>
+              <div class="row">
+                <div class="col-md-4">                  
+                  <ul class="list-group">
+                      <li class="list-group-item" (click)="showMpesaWidget()"><img class="pay-icon" src="/assets/img/portfolios/logo/mpesa.png" alt="" srcset=""></li>
+                      <li class="list-group-item"  (click)="showJamboPayWidget()"><img class="pay-icon" src="/assets/img/portfolios/logo/jambopay.png" alt="" srcset=""></li>
+                      <li class="list-group-item"><img class="pay-icon" src="/assets/img/portfolios/logo/airtel_money.png" alt="" srcset=""></li>                      
                     </ul>
-                  </div>
-              </div>													
+                </div>
+                <div class="col-md-8">
+                    <app-mpesa-checkout *ngIf="showMpesa" [mpesaReference]="reference_no"></app-mpesa-checkout> 
+                    <app-wallet-checkout *ngIf="showJamboPay" [mpesaReference]="reference_no"></app-wallet-checkout>
+
+                    <div *ngIf=" !showMpesa && !showJamboPay" class="head-typo typo-com collap-expand book-form inn-com-form">      
+                        <p>Please Select Your Payment Method</p>                        
+                    </div>
+                </div>                
+              </div>
+            </div>         												
           </div>
         </div>
         <div class="col-md-4">

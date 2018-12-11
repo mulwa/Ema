@@ -14,7 +14,7 @@
 .seat-area{
     background-position: center;
     margin-top: 20px;
-    background-size: 90%;
+    background-size: 95%;
     text-align: center;
 }
 
@@ -28,11 +28,9 @@
 .third_column{
     align-self: flex-end;
 }
-.fa-couch{
-    font-size: 12px;
-}
 .seat-label{
-    /* color: #000; */
-    align-items: center;
+    color: #FF6F00;
+    font-weight: 600;
+    text-align: center;
 }
 

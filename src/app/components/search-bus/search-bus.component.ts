@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookingService } from 'src/app/services/booking.service';
 import { FormBuilder,  FormGroup, Validators} from  '@angular/forms';
 import { Dates } from 'src/app/models/dates';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bus',
@@ -14,7 +15,7 @@ export class SearchBusComponent implements OnInit {
   public traveling_dates:Dates[];
   public searchForm:FormGroup;
 
-  constructor(private bookService:BookingService, private fb:FormBuilder) { }
+  constructor(private bookService:BookingService, private fb:FormBuilder, private router:Router) { }
 
   ngOnInit() {
     this.getCity()
@@ -48,7 +49,9 @@ export class SearchBusComponent implements OnInit {
   }
   onSearch(){
     console.log("search clicked")
-    console.log(this.searchForm.value)
+    
+
+    this.router.navigate(['/vehiclelist',{from:this.searchForm.get('from').value, to_id:this.searchForm.get('to_id').value, travel_date:this.searchForm.get('travel_date').value}])
   }
 
 }
