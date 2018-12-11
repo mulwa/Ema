@@ -8,13 +8,21 @@
     /* background-color: darkgray; */
     display: grid;
     justify-content: center;
-    grid-template-columns: 45px;  
+    grid-template-columns: 45px; 
+    align-items: center; 
+}
+.seat-area{
+    background-position: center;
+    margin-top: 20px;
+    background-size: 90%;
+    text-align: center;
 }
 
 .inner-seat-row{    
     margin: 5px;       
     color: #ffffff;
-    background-color: rgb(184, 201, 185);
+    /* background-color: rgb(184, 201, 185); */
+    background-position: center;
     cursor: pointer;
 }
 .third_column{
@@ -22,5 +30,9 @@
 }
 .fa-couch{
     font-size: 12px;
+}
+.seat-label{
+    /* color: #000; */
+    align-items: center;
 }
 

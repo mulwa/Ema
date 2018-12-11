@@ -8,6 +8,9 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 export class FoutynineSeaterComponent implements OnInit {
   seats_selected:any[]= []  
   seatArray:any = [1,'1X','Driver',2,3,4,5,6,7,8,9,10];
+  seat_selected = 'assets/images/seat/selected.png';
+  seat_not_available = 'assets/images/seat/not-available.png';
+  seat_available = 'assets/images/seat/available.png';
   
   @Input()
   available_seats:any[] 
@@ -32,9 +35,9 @@ export class FoutynineSeaterComponent implements OnInit {
 
   checkIfSelected(seatNo){
     if(this.seats_selected.indexOf(seatNo) !== -1){
-      return 'selected'
+      return this.seat_selected;
     }else{
-      return 'not-selected'
+      return this.seat_available
     }
   }
   // checks if  seat available

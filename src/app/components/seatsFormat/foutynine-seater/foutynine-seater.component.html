@@ -1,11 +1,11 @@
 <div class="seat-grid">
   <div class="seat-row" *ngFor="let seat of seatArray">
     <!-- <i class="fas fa-couch" *ngIf="seat != 'Driver'"><p class="seat-label">{{seat}}</p></i> -->
-    <div class="seat-area" *ngIf="checkIfAvailable(seat) && seat !='Driver'" [ngStyle]="{'background-color':checkIfSelected(seat) === 'selected' ? '#BDBDBD' : '#1B5E20' }" (click)="selectSeat(seat)">
-        <i class="fas fa-couch"><p class="seat-label">{{seat}}</p></i>               
+    <div class="seat-area" *ngIf="checkIfAvailable(seat) && seat !='Driver'" [ngStyle]="{'background-image':'url('+checkIfSelected(seat)+')'}" (click)="selectSeat(seat)">
+        <p class="seat-label">{{seat}}</p>               
     </div>
-    <div class="seat-area seat-not-available" *ngIf=" ! checkIfAvailable(seat) || seat =='Driver'">
-      <i class="fas fa-couch"><p class="seat-label">{{seat}}</p></i>
+    <div class="seat-area seat-not-available" *ngIf=" ! checkIfAvailable(seat) || seat =='Driver'" [ngStyle]="{'background-image':'url('+seat_not_available+')'}" >
+      <p class="seat-label">{{seat}}</p>
     </div>
   </div> 
    

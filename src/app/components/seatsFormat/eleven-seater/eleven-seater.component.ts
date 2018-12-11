@@ -18,6 +18,9 @@ export class ElevenSeaterComponent implements OnInit {
     third_row:any;
     fourth_row:any;
     fifth_row:any;
+    seat_selected = 'assets/images/seat/selected.png';
+    seat_not_available = 'assets/images/seat/not-available.png';
+    seat_available = 'assets/images/seat/available.png';
   
 
   constructor() { 
@@ -57,9 +60,9 @@ initializeSeater49():void{
   }
   checkIfSelected(seatNo){
       if(this.selected_seats.indexOf(seatNo) !== -1){
-          return 'selected'
+          return this.seat_selected;
       }else{
-          return 'not-selected'
+          return this.seat_available;
       }
   }
 

@@ -1,51 +1,51 @@
 <div class="seat-grid">
   <div class="seat-row first_column">
     <div class="inner-seat-row" *ngFor="let seat of first_row" >
-      <div class="seat-area" *ngIf="checkIfAvailable(seat)" [ngStyle]="{'background-color':checkIfSelected(seat) === 'selected' ? '#BDBDBD' : '#1B5E20' }" (click)="seatSelected(seat)">
-          <i class="fas fa-couch"><p class="seat-label">{{seat}}</p></i>               
+      <div class="seat-area" *ngIf="checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+checkIfSelected(seat)+')'}" (click)="seatSelected(seat)">
+          <p class="seat-label">{{seat}}</p>               
       </div>
-      <div class="seat-area seat-not-available" *ngIf=" ! checkIfAvailable(seat)">
-        <i class="fas fa-couch"><p class="seat-label">{{seat}}</p></i>
+      <div class="seat-area" *ngIf=" ! checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+seat_not_available+')'}">
+        <p class="seat-label">{{seat}}</p>
       </div>        
     </div>    
   </div>
   <div class="seat-row second_column">
     <div class="inner-seat-row" *ngFor="let seat of second_row" >
-        <div class="seat-area" *ngIf=" checkIfAvailable(seat)" [ngStyle]="{'background-color':checkIfSelected(seat) === 'selected' ? '#BDBDBD' : '#1B5E20' }" (click)="seatSelected(seat)">
-            <i class="fas fa-couch"><p class="seat-label">{{seat}}</p></i>               
+        <div class="seat-area" *ngIf=" checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+checkIfSelected(seat)+')'}" (click)="seatSelected(seat)">
+            <p class="seat-label">{{seat}}</p>               
         </div>
-        <div class="seat-area seat-not-available" *ngIf=" ! checkIfAvailable(seat)">
+        <div class="seat-area" *ngIf=" ! checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+seat_not_available+')'}" >
           <i class="fas fa-couch"><p class="seat-label">{{seat}}</p></i>
         </div>        
       </div>    
   </div>
   <div class="seat-row third_column" >
     <div class="inner-seat-row" *ngFor="let seat of third_row" >
-        <div class="seat-area" *ngIf="checkIfAvailable(seat)" [ngStyle]="{'background-color':checkIfSelected(seat) === 'selected' ? '#BDBDBD' : '#1B5E20' }" (click)="seatSelected(seat)">
-            <i class="fas fa-couch"><p class="seat-label">{{seat}}</p></i>               
+        <div class="seat-area" *ngIf="checkIfAvailable(seat)"  [ngStyle]="{'background-image':'url('+checkIfSelected(seat)+')'}" (click)="seatSelected(seat)">
+            <p class="seat-label">{{seat}}</p>             
         </div>
-        <div class="seat-area seat-not-available" *ngIf=" ! checkIfAvailable(seat)">
-          <i class="fas fa-couch"><p class="seat-label">{{seat}}</p></i>
+        <div class="seat-area seat-not-available" *ngIf=" ! checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+seat_not_available+')'}" >
+          <p class="seat-label">{{seat}}</p>
         </div>        
     </div> 
   </div>
   <div class="seat-row fourth_column">
     <div class="inner-seat-row" *ngFor="let seat of fourth_row" >
-        <div class="seat-area" *ngIf="checkIfAvailable(seat)" [ngStyle]="{'background-color':checkIfSelected(seat) === 'selected' ? '#BDBDBD' : '#1B5E20' }" (click)="seatSelected(seat)">
-            <i class="fas fa-couch"><p class="seat-label">{{seat}}</p></i>               
+        <div class="seat-area" *ngIf="checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+checkIfSelected(seat)+')'}" (click)="seatSelected(seat)">
+            <p class="seat-label">{{seat}}</p>               
         </div>
-        <div class="seat-area seat-not-available" *ngIf=" ! checkIfAvailable(seat)">
-          <i class="fas fa-couch"><p class="seat-label">{{seat}}</p></i>
+        <div class="seat-area seat-not-available" *ngIf=" ! checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+seat_not_available+')'}"  >
+          <p class="seat-label">{{seat}}</p>
         </div>        
     </div>    
   </div>
   <div class="seat-row fifth_column">
     <div class="inner-seat-row" *ngFor="let seat of fifth_row" >
-        <div class="seat-area" *ngIf="checkIfAvailable(seat)" [ngStyle]="{'background-color':checkIfSelected(seat) === 'selected' ? '#BDBDBD' : '#1B5E20' }" (click)="seatSelected(seat)">
-            <i class="fas fa-couch"><p class="seat-label">{{seat}}</p></i>               
+        <div class="seat-area" *ngIf="checkIfAvailable(seat)"  (click)="seatSelected(seat)" [ngStyle]="{'background-image':'url('+checkIfSelected(seat)+')'}"  >
+            <p class="seat-label">{{seat}}</p>             
         </div>
-        <div class="seat-area seat-not-available" *ngIf=" ! checkIfAvailable(seat)">
-          <i class="fas fa-couch"><p class="seat-label">{{seat}}</p></i>
+        <div class="seat-area seat-not-available" *ngIf=" ! checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+seat_not_available+')'}" >
+          <p class="seat-label">{{seat}}</p>
         </div>        
       </div>    
   </div>       

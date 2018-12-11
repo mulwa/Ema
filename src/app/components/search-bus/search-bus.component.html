@@ -28,7 +28,7 @@
                   <select mz-select
                   placeholder="Traveling Date"
                   formControlName="travel_date">
-                      <option value="2">2</option>
+                      <option *ngFor="let dates of traveling_dates" [value]="dates.name">{{dates.name}}</option>
                   </select>                  
                 </mz-select-container>                  
                 <div class="input-field col s12 m4 l2">                  

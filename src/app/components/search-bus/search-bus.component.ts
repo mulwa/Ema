@@ -41,7 +41,7 @@ export class SearchBusComponent implements OnInit {
   getTravelingDates(){
     this.bookService.getTravelDates().subscribe(data =>{
       this.traveling_dates = data.dates;
-      console.log(`${this.traveling_dates}`)
+      console.log(this.traveling_dates)
     }, error =>{
       console.log(`An Error Has Occured fetching Traveling Dates ${error.message}`)
     })
