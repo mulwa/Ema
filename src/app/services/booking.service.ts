@@ -128,8 +128,10 @@ export class BookingService {
       amount_charged: amount_charged,
       reference_number: reference_number
     }    
-    console.log(body)      
-    return this.http.post<ReservationRes>(baseUrl,body)
+    // console.log(body)   
+    return this.http.post<ReservationRes>(baseUrl,body)       
+    
+    
   }
   getTicketInfor(phone_number:string){
     let body = {
@@ -166,6 +168,13 @@ export class BookingService {
   return this.http.post<responseI>(baseUrl,body);
   
   }
+  public sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+  }
+  public waiting(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
 
 
 }
