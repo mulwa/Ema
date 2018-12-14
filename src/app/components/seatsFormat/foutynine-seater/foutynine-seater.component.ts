@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { seatLimit } from 'src/app/models/constants';
 
 @Component({
   selector: 'app-foutynine-seater',
@@ -43,6 +44,22 @@ export class FoutynineSeaterComponent implements OnInit {
   // checks if  seat available
   checkIfAvailable(seatNo):boolean{
     return this.available_seats.includes(seatNo)
+  }
+  ExceedSeatMax():boolean{
+    if(this.seats_selected.length > seatLimit){
+      return true
+    }
+    return false;
+  }
+  removeSeat(seat){
+    let index = this.seats_selected.indexOf(seat)
+    if(index !== -1){
+      this.seats_selected.splice(index,1)
+      this.seatSelectionEvent.emit(seat)
+    }else{
+      console.log('You Have Booked maximum allowed Seats')
+    }
+
   }
 
 

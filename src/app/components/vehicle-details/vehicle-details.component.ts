@@ -160,8 +160,7 @@ export class VehicleDetailsComponent implements OnInit {
         let served_by = res.served_by;
         let amount_charged =  "";
         let reference_number =  this.referenceNumber; 
-
-        // this.sleep(5000)
+       
         
         this.bookingService.reserveBooking(from_city, to_city,travel_date,selected_vehicle,seater,
             selected_ticket_type,selected_seat,payment_method,phone_number,passenger_name, email_address,

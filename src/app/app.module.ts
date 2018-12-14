@@ -29,6 +29,10 @@ import { MpesaCheckoutComponent } from './components/mpesa-checkout/mpesa-checko
 import { WalletCheckoutComponent } from './components/wallet-checkout/wallet-checkout.component';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { SixteenSeaterComponent } from './seatsFormat/sixteen-seater/sixteen-seater.component';
+import { FiveteeneSeaterComponent } from './seatsFormat/fiveteene-seater/fiveteene-seater.component';
+import { PrintTicketComponent } from './components/print-ticket/print-ticket.component';
+import { TicketListComponent } from './components/ticket-list/ticket-list.component';
 
 
 @NgModule({
@@ -53,7 +57,11 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     FoutynineSeaterComponent,
     PaymentComponent,
     MpesaCheckoutComponent,
-    WalletCheckoutComponent, 
+    WalletCheckoutComponent,
+    SixteenSeaterComponent,    
+    FiveteeneSeaterComponent,
+    PrintTicketComponent,
+    TicketListComponent, 
     
   ],
   imports: [

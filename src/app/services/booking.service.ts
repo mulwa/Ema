@@ -97,7 +97,7 @@ export class BookingService {
       travel_date:travel_date,
       selected_vehicle:selected_vehicle,
       selected_seat:selected_seat,
-      seater:seater     
+      seater:seater    
               
     }
     console.log(body)
@@ -168,13 +168,6 @@ export class BookingService {
   return this.http.post<responseI>(baseUrl,body);
   
   }
-  public sleep(delay) {
-    var start = new Date().getTime();
-    while (new Date().getTime() < start + delay);
-  }
-  public waiting(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms))
-}
 
 
 }

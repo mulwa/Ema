@@ -20,12 +20,19 @@
                        <!-- Generate the seating grid -->
                        <app-loading *ngIf="loading"></app-loading>                        
                         <app-foutynine-seater [available_seats]="seatsFound"  *ngIf="seater == 11 && ! loading" (seatSelectionEvent)="onseatSelection($event)" ></app-foutynine-seater>
-                        <app-eleven-seater [available_seats]="seatsFound" *ngIf="seater > 12 && ! loading" (seatSelectionEvent)="onseatSelection($event)" ></app-eleven-seater>
+                        <app-eleven-seater [available_seats]="seatsFound" *ngIf="seater == 49 && ! loading" (seatSelectionEvent)="onseatSelection($event)" ></app-eleven-seater>
+                        <app-fiveteene-seater *ngIf="seater == 15 && ! loading"></app-fiveteene-seater>
+                        <app-sixteen-seater  *ngIf="seater == 16 && ! loading"></app-sixteen-seater>
                     </div>
                   </div>
                   <div class="col-md-6" *ngIf="selectedSeats.length == 0">
                     <div class="head-typo typo-com">
                       <p>Please Select Seat To Book</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6" *ngIf="selectedSeats.length == 6">
+                    <div class="head-typo typo-com">
+                      <p>You Are Only Allowed to Book 6 seats</p>
                     </div>
                   </div>
                   <div class="col-md-6" *ngIf="selectedSeats.length != 0"> 
@@ -76,7 +83,7 @@
       <div class="col-md-4">
         <!--=========================================-->
         <div class="hp-call hp-right-com">
-          <div class="hp-call-in"> <img src="/assets/images/icon/dbc4.png" alt="">
+          <div class="hp-call-in"> <img src="/assets/images/icon/dbc2.png" alt="">
             <h3><span>Need Help. Call us!</span> 041226620</h3> <small>We are available 24/7 Monday to Sunday</small> <a href="#">Call Now</a> </div>
         </div>
         <!--=========================================-->
