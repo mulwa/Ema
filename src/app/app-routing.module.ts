@@ -11,6 +11,7 @@ import {Routes, RouterModule} from  '@angular/router';
 import { OfficesComponent } from './components/offices/offices.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { PrintTicketComponent } from './components/print-ticket/print-ticket.component';
 
 const routes: Routes = [
   { path: 'booking', component: BookingComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'fleet', component:FleetComponent},
   { path:'about', component: AboutComponent},
   { path: 'payment', component:PaymentComponent},
+  { path: 'myticket', component:PrintTicketComponent },
   { path:'**', component:HomeComponent}
 
 ]

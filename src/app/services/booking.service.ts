@@ -97,7 +97,7 @@ export class BookingService {
       travel_date:travel_date,
       selected_vehicle:selected_vehicle,
       selected_seat:selected_seat,
-      seater:seater     
+      seater:seater    
               
     }
     console.log(body)
@@ -128,8 +128,10 @@ export class BookingService {
       amount_charged: amount_charged,
       reference_number: reference_number
     }    
-    console.log(body)      
-    return this.http.post<ReservationRes>(baseUrl,body)
+    // console.log(body)   
+    return this.http.post<ReservationRes>(baseUrl,body)       
+    
+    
   }
   getTicketInfor(phone_number:string){
     let body = {

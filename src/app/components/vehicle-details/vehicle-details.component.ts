@@ -144,7 +144,7 @@ export class VehicleDetailsComponent implements OnInit {
       console.log(`Booking details ${numOfPassangers} Ticket Type ${this.ticket_type}`)
       this.asyncForEach( this.passanger.value,(res)=>{
           
-          let from_city = this.from_id
+        let from_city = this.from_id
         let to_city = this.to_id
         let travel_date = this.travel_date.split(',')[0]     
         let selected_vehicle = this.bus_id
@@ -160,6 +160,7 @@ export class VehicleDetailsComponent implements OnInit {
         let served_by = res.served_by;
         let amount_charged =  "";
         let reference_number =  this.referenceNumber; 
+       
         
         this.bookingService.reserveBooking(from_city, to_city,travel_date,selected_vehicle,seater,
             selected_ticket_type,selected_seat,payment_method,phone_number,passenger_name, email_address,
@@ -201,6 +202,7 @@ export class VehicleDetailsComponent implements OnInit {
         //  }
 
       })
+
     //   for(let pass= 0; pass < numOfPassangers; pass++){
     //     let from_city = this.from_id
     //     let to_city = this.to_id
@@ -220,7 +222,8 @@ export class VehicleDetailsComponent implements OnInit {
     //     let reference_number =  this.bookingForm.get('reference_number').value;        
        
        
-    //    // reference_number: this.checkOutForm.get('reference_number').value,                      
+    //    // reference_number: this.checkOutForm.get('reference_number').value, 
+    //    console.log(`Submiting passanger ${pass}`)                        
     //      this.bookingService.reserveBooking(from_city, to_city,travel_date,selected_vehicle,seater,
     //         selected_ticket_type,selected_seat,payment_method,phone_number,passenger_name, email_address,
     //         id_number,insurance_charge,served_by,amount_charged,reference_number).subscribe(data =>{
@@ -259,10 +262,16 @@ export class VehicleDetailsComponent implements OnInit {
     this.bookingForm.reset();
     }
   public async  asyncForEach(array, callback) {
-    for (let index = 0; index < array.length; index++) {
+    for (let index = 0; index < array.length; index++) { 
+      await this.waiting(3000)     
       await callback(array[index], index, array);
+      
     }
   }
+  public waiting(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
+
 
 }
  

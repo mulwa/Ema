@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { seatLimit } from 'src/app/models/constants';
 
 @Component({
   selector: 'app-eleven-seater',
@@ -69,6 +70,22 @@ initializeSeater49():void{
 //   check if seat is available
   checkIfAvailable(seatNo):boolean{
       return this.available_seats.includes(seatNo)
+  }
+  ExceedSeatMax():boolean{
+    if(this.selected_seats.length > seatLimit){
+      return true
+    }
+    return false;
+  }
+  removeSeat(seat){
+    let index = this.selected_seats.indexOf(seat)
+    if(index !== -1){
+      this.selected_seats.splice(index,1)
+      this.seatSelectionEvent.emit(seat)
+    }else{
+      console.log('You Have Booked maximum allowed Seats')
+    }
+
   }
 
 }
