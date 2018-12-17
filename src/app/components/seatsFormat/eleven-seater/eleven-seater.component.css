@@ -8,17 +8,17 @@
     /* background-color: darkgray; */
     display: grid;
     justify-content: center;
-    grid-template-columns: 9vh; 
+    grid-template-columns: 7vh; 
     align-items: center; 
 }
 .seat-area{
     background-position: center;    
-    background-size: 85%;
+    background-size: 50%;
     background-repeat: no-repeat;
     text-align: center;      
 }
 .inner-seat-row{    
-    margin: 5px;       
+    margin: 1px;       
     color: #ffffff;
     /* background-color: rgb(184, 201, 185); */
     background-position: center;

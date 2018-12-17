@@ -1,39 +1,40 @@
-	<!--TOP SECTION-->
-		<!--DASHBOARD SECTION-->
-		<div class="dashboard">
-			<div class="db-left">
-				<div class="db-left-1">
-					<h4>ENA Coach</h4>
-					<p>Ticket Management</p>
-				</div>
-				<div class="db-left-2">				
-				</div>
-			</div>
-			<div class="db-cent">
-				<div class="db-cent-1">
-					<p>Guest User,</p>
-					<h4>Ticket Management Portal</h4> </div>
-				<div class="db-cent-3">
-					<div class="db-cent">
-			</div>
-					<div class="book-form inn-com-form db-form">
-						<form class="col s12" action="" method="get">
-							<div class="row">
-								<div class="input-field col s12">
-									<input type="text" class="validate" name="reference_number" required="" minlength="10">
-									<label>Enter ticket, phone or payment reference to search</label>
-								</div>
-								<div class="input-field col s12">
-									<input type="submit" value="search now" class="form-btn" (click)="gotoPrint(MA00104600)"> 
-								</div>
-							</div>
-            </form>            
-					</div>
-          <br/>	
-          <app-ticket-list [ReferenceNumber]="refNo"></app-ticket-list>					
-				</div>
-			</div>
+<!--TOP SECTION-->
+<!--DASHBOARD SECTION-->
+<div class="dashboard">
+	<div class="db-left">
+		<div class="db-left-1">
+			<h4>ENA Coach</h4>
+			<p>Ticket Management</p>
 		</div>
-		<!--END DASHBOARD SECTION-->
-		<!--TOP SECTION-->
-		
+		<div class="db-left-2">
+		</div>
+	</div>
+	<div class="db-cent">
+		<div class="db-cent-1">			
+			<h4>Ticket Management Portal</h4>
+		</div>
+		<div class="db-cent-3">
+			<div class="db-cent">
+			</div>
+			<div class="book-form inn-com-form db-form">
+				<form class="col s12" action="" method="get">
+					<div class="row">
+						<div class="input-field col s12">
+							<input type="text" [(ngModel)]="reference_number" (ngModelChange)="username = $event" class="validate" name="reference_number"
+							 required="" minlength="10">
+							<label>Enter ticket, phone or payment reference to search</label>
+						</div>
+						<div class="input-field col s12">
+							<input type="submit" value="search now" class="form-btn" (click)="getTicketDetails(reference_number)">
+						</div>
+					</div>
+				</form>
+			</div>
+			<br />
+			<app-ticket-list [TicketList]="mytickets" *ngIf="mytickets"></app-ticket-list>
+			<app-loading *ngIf="showloading"></app-loading>
+		</div>
+	</div>
+</div>
+<!--END DASHBOARD SECTION-->
+<!--TOP SECTION-->

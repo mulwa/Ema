@@ -33,6 +33,8 @@ import { SixteenSeaterComponent } from './seatsFormat/sixteen-seater/sixteen-sea
 import { FiveteeneSeaterComponent } from './seatsFormat/fiveteene-seater/fiveteene-seater.component';
 import { PrintTicketComponent } from './components/print-ticket/print-ticket.component';
 import { TicketListComponent } from './components/ticket-list/ticket-list.component';
+import { ComponentsComponent } from './components/components.component';
+import { TickettoprintComponent } from './tickettoprint/tickettoprint.component';
 
 
 @NgModule({
@@ -61,7 +63,9 @@ import { TicketListComponent } from './components/ticket-list/ticket-list.compon
     SixteenSeaterComponent,    
     FiveteeneSeaterComponent,
     PrintTicketComponent,
-    TicketListComponent, 
+    TicketListComponent,
+    ComponentsComponent,
+    TickettoprintComponent, 
     
   ],
   imports: [

@@ -1,3 +1,5 @@
+import { Ticket } from 'src/app/models/ticketRes';
+import { BookingService } from 'src/app/services/booking.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
@@ -6,15 +8,32 @@ import { DOCUMENT } from '@angular/common';
   templateUrl: './print-ticket.component.html',
   styleUrls: ['./print-ticket.component.css']
 })
-export class PrintTicketComponent implements OnInit {
-  refNo ='MA00104600';
+export class PrintTicketComponent implements OnInit { 
+  mytickets:Ticket[];
+  showloading:boolean;
 
-  constructor() { }
+  constructor(private bookingService:BookingService) { }
 
   ngOnInit() {
   }
-  gotoPrint(){
+
+  getTicketDetails(identify){
+    console.log(identify)
+    this.showloading = true;
+    console.log('searching ')
+    this.bookingService.getAllCustomerTickets(identify).subscribe(data =>{
+      this.showloading = false      
+      if(data.response_code == 0){
+        this.mytickets = data.tickets;
+        console.log(this.mytickets)
+      }else{
+        console.log('No Ticket found')
+      }
+
+    })
     
+
   }
+ 
 
 }

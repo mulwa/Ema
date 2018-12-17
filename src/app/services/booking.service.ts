@@ -168,6 +168,15 @@ export class BookingService {
   return this.http.post<responseI>(baseUrl,body);
   
   }
+  getAllCustomerTickets(phone_number:any){
+    let body = {
+      username:username,
+      api_key:api_key,
+      action:"SearchTicket",
+      identifier:phone_number
+    }  
+    return this.http.post<TicketResponse>(baseUrl,body)
+  }
 
 
 }

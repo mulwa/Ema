@@ -12,6 +12,7 @@ import { OfficesComponent } from './components/offices/offices.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PrintTicketComponent } from './components/print-ticket/print-ticket.component';
+import { TickettoprintComponent } from './tickettoprint/tickettoprint.component';
 
 const routes: Routes = [
   { path: 'booking', component: BookingComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path:'about', component: AboutComponent},
   { path: 'payment', component:PaymentComponent},
   { path: 'myticket', component:PrintTicketComponent },
+  { path: 'print', component:TickettoprintComponent},
   { path:'**', component:HomeComponent}
 
 ]

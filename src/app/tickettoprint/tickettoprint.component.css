@@ -6,7 +6,7 @@
     height: 365px;
     /* background-image: url("images/water_mark_logo.png"), url("images/water_mark_logo.png");  */
 }
-#rcorners2 table {
+table {
     border-collapse:separate;
     border:solid #d9d9d9 0px;
     width: 800px;
@@ -14,17 +14,17 @@
     -moz-border-radius:0px;
 }
 
-#rcorners2 td, th {
+td, th {
     border-left:solid black 0;
     border-top:solid black 0;
 }
 
-#rcorners2 th {
+th {
     background-color: blue;
     border-top: none;
 }
 
-#rcorners2 td:first-child, th:first-child {
+td:first-child, th:first-child {
      border-left: none;
 }
 @font-face {
