@@ -1,3 +1,40 @@
 <p>
-  sixteen-seater works!
+  fiveteene-seater works!
 </p>
+<div class="seat-grid">
+  <div class="row-grid" *ngFor="let seat of first_row">
+      <div class="seat-area">
+          {{seat}}
+      </div> 
+  </div>
+</div>  
+  <div class="seat-grid">
+    <div class="row-grid" *ngFor="let seat of second_row">
+        <div class="seat-area">
+            {{seat}}
+        </div> 
+    </div>
+  </div>
+  <div class="seat-grid">
+    <div class="row-grid" *ngFor="let seat of third_row">
+        <div class="seat-area">
+            {{seat}}
+        </div> 
+    </div>
+  </div>
+  <div class="seat-grid">
+    <div class="row-grid" *ngFor="let seat of fourth_row">
+      <div class="seat-area">
+          {{seat}}
+      </div>     
+    </div>
+  </div>
+  <div class="grid-fourth">
+    <div class="column-four" *ngFor="let seat of fifth_row" >
+        <div class="seat-area">
+            {{seat}}
+        </div> 
+    </div>
+  </div>
+  
+  

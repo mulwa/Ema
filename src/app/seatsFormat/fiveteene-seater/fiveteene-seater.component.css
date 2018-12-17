@@ -1,6 +1,32 @@
 .seat-grid {
     display: grid;
+    grid-template-columns: 100px 100px 100px; 
+    /* grid-template-columns: 50px 50px 50px;     */
+
+}
+.grid-fourth{
+    display: grid;
+    grid-template-columns: 50px 100px 50px 100px;
+    /* grid-template-columns: 25px 50px 25px 25px; */
+
+}
+.column-four{
+    display: grid;  
+
+}
+.column-two{
+    display: grid;   
+
 }
 .row-grid{
-    display: grid;
+    cursor: pointer;
+    margin: 5px;
+}
+.seat-area {
+    background-position: center;
+    background-size: 75%;
+    background-repeat: no-repeat;
+    text-align: center;
+    /* background-color: blue; */    
+    background-image: url("./../../../assets/images/seat/available.png");
 }

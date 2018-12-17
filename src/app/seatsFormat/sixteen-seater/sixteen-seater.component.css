@@ -1,0 +1,36 @@
+.seat-grid {
+    display: grid;
+    grid-template-columns: 100px 100px 100px; 
+    /* grid-template-columns: 50px 50px 50px;     */
+
+}
+.grid-fourth{
+    display: grid;
+    grid-template-columns: 50px 100px 50px 50px;
+    grid-gap: 10px;
+    /* grid-template-columns: 25px 50px 25px 25px; */
+
+}
+.column-four{
+    display: grid; 
+    /* justify-self: start;  */
+
+}
+.column-two{
+    display: grid;    
+
+}
+.row-grid{
+    /* width: 50vh; */
+    cursor: pointer;
+    padding: 10px;
+    /* justify-self: start; */
+}
+.seat-area {
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    text-align: center;
+    /* background-color: blue; */    
+    background-image: url("./../../../assets/images/seat/available.png");
+}
