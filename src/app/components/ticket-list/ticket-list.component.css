@@ -4,7 +4,7 @@
     padding: 0px; 
     width: 1000px;
     height: 365px;
-    /* background-image: url("images/water_mark_logo.png"), url("images/water_mark_logo.png");  */
+    background-image: url("../../../assets/images/water_mark_logo.png"), url("../../../assets/images/water_mark_logo.png"); 
 }
 #rcorners2 table {
     border-collapse:separate;
@@ -29,11 +29,11 @@
 }
 @font-face {
     font-family: AmplitudeWide-Book;
-    /* src: url("fonts/AmplitudeWide-Book.ttf"); */
+    src: url("../../../assets/fonts/AmplitudeWide-Book.ttf");
 }
 
 @font-face {
     font-family: AmplitudeComp-Bold;
-    /* src: url("fonts/AmplitudeComp-Bold.ttf"); */
+    src: url("../../../assets/fonts/AmplitudeComp-Bold.ttf");
     font-weight: bold;
 }
