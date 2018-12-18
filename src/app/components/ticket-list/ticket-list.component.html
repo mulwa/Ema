@@ -22,7 +22,7 @@
         <td>{{ticket.payment_date}}</td>
         <td>{{ticket.reference_number}}</td>
         <td *ngIf="ticket.status =='pending'"><a href="#" class="db-not-success">{{ticket.status}}</a></td>
-        <td *ngIf="ticket.status =='confirmed'"><div (click)="printTicket('rcorners2')"  class="db-success">Print Ticket</div></td>
+        <td *ngIf="ticket.status =='confirmed'"><div (click)="printTicket(ticket)"  class="db-success">Print Ticket</div></td>
       </tr>
     </tbody>
   </table>

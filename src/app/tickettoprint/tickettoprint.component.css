@@ -4,9 +4,10 @@
     padding: 0px; 
     width: 1000px;
     height: 365px;
-    /* background-image: url("images/water_mark_logo.png"), url("images/water_mark_logo.png");  */
+    /* background-image: url("../../../assets/images/water_mark_logo.png"), url("../../../assets/images/water_mark_logo.png");  */
 }
-table {
+
+#rcorners2 table {
     border-collapse:separate;
     border:solid #d9d9d9 0px;
     width: 800px;
@@ -14,26 +15,26 @@ table {
     -moz-border-radius:0px;
 }
 
-td, th {
+#rcorners2 td, th {
     border-left:solid black 0;
     border-top:solid black 0;
 }
 
-th {
+#rcorners2 th {
     background-color: blue;
     border-top: none;
 }
 
-td:first-child, th:first-child {
+#rcorners2 td:first-child, th:first-child {
      border-left: none;
 }
 @font-face {
     font-family: AmplitudeWide-Book;
-    /* src: url("fonts/AmplitudeWide-Book.ttf"); */
+    /* src: url("../../../assets/fonts/AmplitudeWide-Book.ttf"); */
 }
 
 @font-face {
     font-family: AmplitudeComp-Bold;
-    /* src: url("fonts/AmplitudeComp-Bold.ttf"); */
+    /* src: url("../../../assets/fonts/AmplitudeComp-Bold.ttf"); */
     font-weight: bold;
 }
