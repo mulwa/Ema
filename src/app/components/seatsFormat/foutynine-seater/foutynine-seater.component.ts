@@ -8,13 +8,14 @@ import { seatLimit } from 'src/app/models/constants';
 })
 export class FoutynineSeaterComponent implements OnInit {
   seats_selected:any[]= []  
-  seatArray:any = [1,'1X','Driver',2,3,4,5,6,7,8,9,10];
+  seatArray:any = [1,'1X','Drv',2,3,4,5,6,7,8,9,10];
   seat_selected = 'assets/images/seat/selected.png';
   seat_not_available = 'assets/images/seat/not-available.png';
   seat_available = 'assets/images/seat/available.png';
   
   @Input()
   available_seats:any[] 
+
   
   @Output()
   seatSelectionEvent = new EventEmitter<number>();

@@ -1,39 +1,54 @@
 <p>
-  fiveteene-seater works!
-</p>
+  fiveteene-seater works file name sixteen seater! 
+</p> 
 <div class="seat-grid">
   <div class="row-grid" *ngFor="let seat of first_row">
-      <div class="seat-area">
-          {{seat}}
-      </div> 
-  </div>
+      <div class="seat-area" *ngIf="checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+checkIfSelected(seat)+')'}" (click)="selectSeat(seat)" >
+          <p>{{seat}}</p>
+      </div>
+      <div class="seat-area" *ngIf=" ! checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+seat_not_available+')'}" >
+        <p class="seat-label">{{seat}}</p>
+      </div>  
+  </div> 
 </div>  
   <div class="seat-grid">
     <div class="row-grid" *ngFor="let seat of second_row">
-        <div class="seat-area">
-            {{seat}}
+        <div class="seat-area" *ngIf="checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+checkIfSelected(seat)+')'}" (click)="selectSeat(seat)" >
+            <p>{{seat}}</p>
+        </div>
+        <div class="seat-area" *ngIf=" ! checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+seat_not_available+')'}" >
+          <p class="seat-label">{{seat}}</p>
         </div> 
     </div>
   </div>
   <div class="seat-grid">
     <div class="row-grid" *ngFor="let seat of third_row">
-        <div class="seat-area">
-            {{seat}}
+        <div class="seat-area" *ngIf="checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+checkIfSelected(seat)+')'}" (click)="selectSeat(seat)" >
+            <p>{{seat}}</p>
+        </div>
+        <div class="seat-area" *ngIf=" ! checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+seat_not_available+')'}" >
+          <p class="seat-label">{{seat}}</p>
         </div> 
     </div>
   </div>
   <div class="seat-grid">
     <div class="row-grid" *ngFor="let seat of fourth_row">
-      <div class="seat-area">
-          {{seat}}
-      </div>     
+        <div class="seat-area" *ngIf="checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+checkIfSelected(seat)+')'}" (click)="selectSeat(seat)" >
+            <p>{{seat}}</p>
+        </div>
+        <div class="seat-area" *ngIf=" ! checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+seat_not_available+')'}" >
+          <p class="seat-label">{{seat}}</p>
+        </div>     
     </div>
   </div>
   <div class="grid-fourth">
     <div class="column-four" *ngFor="let seat of fifth_row" >
-        <div class="seat-area">
-            {{seat}}
-        </div> 
+        <div class="seat-area" *ngIf="checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+checkIfSelected(seat)+')'}" (click)="selectSeat(seat)" >
+            <p>{{seat}}</p>
+        </div>
+        <div class="seat-area" *ngIf=" ! checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+seat_not_available+')'}" >
+          <p class="seat-label">{{seat}}</p>
+        </div>  
     </div>
   </div>
   

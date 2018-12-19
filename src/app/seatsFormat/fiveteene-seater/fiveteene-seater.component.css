@@ -7,6 +7,7 @@
 .grid-fourth{
     display: grid;
     grid-template-columns: 50px 100px 50px 100px;
+    /* grid-gap: 10px; */
     /* grid-template-columns: 25px 50px 25px 25px; */
 
 }
@@ -24,7 +25,7 @@
 }
 .seat-area {
     background-position: center;
-    background-size: 75%;
+    background-size: 40%;
     background-repeat: no-repeat;
     text-align: center;
     /* background-color: blue; */    

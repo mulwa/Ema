@@ -13,7 +13,8 @@
 }
 .column-four{
     display: grid; 
-    /* justify-self: start;  */
+    /* justify-self: center;  */
+    /* background-color: blue; */
 
 }
 .column-two{
@@ -28,9 +29,9 @@
 }
 .seat-area {
     background-position: center;
-    background-size: 50%;
+    background-size: 40%;
     background-repeat: no-repeat;
     text-align: center;
-    /* background-color: blue; */    
+    /* background-color: blue;     */
     background-image: url("./../../../assets/images/seat/available.png");
 }

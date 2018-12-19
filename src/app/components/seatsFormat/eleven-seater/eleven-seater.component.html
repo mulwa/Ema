@@ -4,7 +4,7 @@
       <div class="seat-area" *ngIf="checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+checkIfSelected(seat)+')'}" (click)="seatSelected(seat)">
           <p class="seat-label">{{seat}}</p>               
       </div>
-      <div class="seat-area" *ngIf=" ! checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+seat_not_available+')'}">
+      <div class="seat-area" *ngIf="!checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+seat_not_available+')'}">
         <p class="seat-label">{{seat}}</p>
       </div>        
     </div>    
@@ -15,7 +15,7 @@
             <p class="seat-label">{{seat}}</p>               
         </div>
         <div class="seat-area" *ngIf=" ! checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+seat_not_available+')'}" >
-          <i class="fas fa-couch"><p class="seat-label">{{seat}}</p></i>
+          <p class="seat-label">{{seat}}</p>
         </div>        
       </div>    
   </div>
