@@ -11,6 +11,8 @@ import { DOCUMENT } from '@angular/common';
 export class PrintTicketComponent implements OnInit { 
   mytickets:Ticket[];
   showloading:boolean;
+  reference_number:any;
+  username:string;
 
   constructor(private bookingService:BookingService) { }
 

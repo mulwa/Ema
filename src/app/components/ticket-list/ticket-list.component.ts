@@ -18,8 +18,13 @@ export class TicketListComponent implements OnInit {
   ngOnInit() {
   }
   printTicket(ticket:Ticket){
+    let url = "http://enacoach.com/print?print_type=ticket&size=A4&reference_number=MA00111487";
+    var W = window.open(url)
+    W.window.print()
+
+    // window.open('http://enacoach.com/print?print_type=ticket&size=A4&reference_number=MA00111487')
     console.log('invoking ticket printing' +ticket.name)
-    this.router.navigate(['/print',{refNo: ticket.reference_number}])
+    // this.router.navigate(['/print',{refNo: ticket.reference_number}])
     
    
   }

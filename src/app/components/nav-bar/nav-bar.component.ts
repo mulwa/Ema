@@ -11,5 +11,8 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit() {
   }
+  openPrinting(){
+    window.open('http://enacoach.com/MyBookings')
+  }
 
 }

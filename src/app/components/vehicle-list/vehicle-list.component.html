@@ -48,7 +48,8 @@
         </div>
         <!--ROOM BOOKING BUTTON-->
         <div class="r5 r-com">
-          <div class="r2-available">{{bus.seats_available}} seats left</div>
+          <div class="r2-available" *ngIf="bus.seats_available > 2" >{{bus.seats_available}} seats left</div>
+          <div class="r2-available" *ngIf="bus.seats_available <= 2" >fully booked</div>
           <a (click)="openBookingPage(bus)" class="inn-room-book">Book</a>
         </div>
       </div>

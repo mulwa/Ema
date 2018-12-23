@@ -22,6 +22,7 @@ export class ElevenSeaterComponent implements OnInit {
     seat_selected = 'assets/images/seat/selected.png';
     seat_not_available = 'assets/images/seat/not-available.png';
     seat_available = 'assets/images/seat/available.png';
+    staff = 'assets/images/seat/staff.png'
   
 
   constructor() { 
@@ -85,6 +86,12 @@ initializeSeater49():void{
     }else{
       console.log('You Have Booked maximum allowed Seats')
     }
+  }
+  isstaffSeat(seatPos):boolean{
+    if(seatPos == '1A' || seatPos == '2A' ){      
+      return true;
+    }   
+    return false;
 
   }
 

@@ -17,7 +17,6 @@ import { FleetComponent } from './components/fleet/fleet.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { AboutComponent } from './components/about/about.component';
 import { OfficesComponent } from './components/offices/offices.component';
-import { MyAccountComponent } from './components/my-account/my-account.component';
 import { MzInputModule, MzSelectModule } from 'ngx-materialize';
 import { BookingService } from './services/booking.service';
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
@@ -50,8 +49,7 @@ import { TickettoprintComponent } from './tickettoprint/tickettoprint.component'
     FleetComponent,
     BookingComponent,
     AboutComponent,
-    OfficesComponent,
-    MyAccountComponent,
+    OfficesComponent,    
     VehicleListComponent,
     VehicleDetailsComponent,
     LoadingComponent,    

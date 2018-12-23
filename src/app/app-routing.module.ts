@@ -9,7 +9,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Routes, RouterModule} from  '@angular/router';
 import { OfficesComponent } from './components/offices/offices.component';
-import { MyAccountComponent } from './components/my-account/my-account.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PrintTicketComponent } from './components/print-ticket/print-ticket.component';
 import { TickettoprintComponent } from './tickettoprint/tickettoprint.component';
@@ -17,8 +16,7 @@ import { TickettoprintComponent } from './tickettoprint/tickettoprint.component'
 const routes: Routes = [
   { path: 'booking', component: BookingComponent},
   { path: 'vehiclelist', component:VehicleListComponent},
-  { path: 'vehicledetails', component:VehicleDetailsComponent},
-  { path: 'myaccount', component:MyAccountComponent},
+  { path: 'vehicledetails', component:VehicleDetailsComponent},  
   { path: 'offices', component: OfficesComponent},
   { path: 'fare', component:FareComponent},
   { path: 'fleet', component:FleetComponent},
