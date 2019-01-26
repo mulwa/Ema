@@ -74,7 +74,8 @@ export class VehicleDetailsComponent implements OnInit {
         this.bookingService.getVehicleDetails(from, to, date, vehicle_id).subscribe(data => {
             if (data.response_code == 0) {
                 this.loading = false;
-                this.seatsFound = data.seats[0].name
+                // this.seatsFound = data.seats[0].name
+                this.seatsFound = data.seats[0].name.split(" ").join("").split(',');
                 console.log(this.seatsFound)
 
             } else {
@@ -118,7 +119,6 @@ export class VehicleDetailsComponent implements OnInit {
             insurance_charge: '',
             served_by: 'Web App',
             amount_charged: '',
-
         });
     }
     get passanger() {
@@ -136,7 +136,6 @@ export class VehicleDetailsComponent implements OnInit {
         this.bookingService.getTicketDetails(this.from_id, this.to_id, this.travel_date.split(',')[0], this.bus_id, this.seater, seat).subscribe(data => {
             this.ticket_type = data.ticket_type[0].id
         })
-
     }
     seerveSeat() {
         this.spinnerService.show()

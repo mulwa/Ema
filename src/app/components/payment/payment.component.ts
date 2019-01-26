@@ -14,6 +14,7 @@ export class PaymentComponent implements OnInit {
   mytickets:Ticket[];
   showMpesa:boolean = true;
   showJamboPay:boolean = false;
+  ticketCost:number;
 
   constructor(private activatedRouter: ActivatedRoute, private bookingService:BookingService) { }
 
@@ -26,7 +27,8 @@ export class PaymentComponent implements OnInit {
   getTicketInfro(refNo:any){
     this.bookingService.getTicketInfor(refNo).subscribe(data =>{
       this.mytickets = data.tickets
-      console.log(this.mytickets)
+      this.ticketCost = parseInt(data.tickets[0].amount) * data.tickets.length
+      console.log('total cost'+this.ticketCost)
 
     })
   }
@@ -37,8 +39,7 @@ export class PaymentComponent implements OnInit {
       this.showMpesa = true;
       this.showJamboPay = false;
     }
-    // console.log(this.showMpesa)
-   
+    // console.log(this.showMpesa)  
 
   }
   showJamboPayWidget(){    
@@ -49,6 +50,9 @@ export class PaymentComponent implements OnInit {
       this.showMpesa = false;
     }
 
+  }
+  expressCheckout(){
+    console.log('express checkout')
   }
   
 

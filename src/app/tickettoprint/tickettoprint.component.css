@@ -38,3 +38,8 @@
     /* src: url("../../../assets/fonts/AmplitudeComp-Bold.ttf"); */
     font-weight: bold;
 }
+.ticket-list{
+    /* text-align: center; */    
+    margin-top: 100px;    
+    /* padding: auto; */
+}

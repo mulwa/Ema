@@ -5,3 +5,11 @@
     margin-top: 5px;
     cursor: pointer;
 }
+.express-btn{
+    height: 50px;
+    background-color: #fff;
+    border: 0px;
+}
+.express-img{
+    width: 100%;
+}

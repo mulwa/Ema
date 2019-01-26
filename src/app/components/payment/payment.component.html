@@ -1,80 +1,100 @@
 <div class="hom-com">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <div class="row">
-            <div class="hp-section">
-              <div class="hp-sub-tit">
-                <h4><span>Booking & Payment Confirmation</span></h4>                
-              </div>             
-              <div class="hp-amini detai-2p">
-                  <div class="head-typo typo-com">
-                      <h2>Booking Summary</h2>
-                      <table class="table table-bordered">
-                        <thead>
-                          <tr>
-                            <th>Seat</th>
-                            <th>Passenger Name</th>
-                            <th>Phone Number</th>
-                            <th>Reference No</th>
-                            <th>Payment Status</th>
-
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let ticket of mytickets">
-                            <td>{{ticket.seat}}</td>
-                            <td>{{ticket.name}}</td>
-                            <td>{{ticket.msisdn}}</td>
-                            <td>{{ticket.reference_number}}</td>
-                            <td>{{ticket.status}}</td>
-                          </tr>                          
-                        </tbody>
-                      </table>
-                    </div>                    
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="hp-sec">
+            <div class="hp-sub-tit">
+              <h4>Booking & Payment Confirmation</h4>
+            </div>
+            <div class="hp-amini detai-2p">
+              <div class="head-typo typo-com">
+                <h5>Booking Summary</h5>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Seat</th>
+                      <th>Passenger Name</th>
+                      <th>Phone Number</th>
+                      <th>Reference No</th>
+                      <th>Payment Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let ticket of mytickets">
+                      <td>{{ticket.seat}}</td>
+                      <td>{{ticket.name}}</td>
+                      <td>{{ticket.msisdn}}</td>
+                      <td>{{ticket.reference_number}}</td>
+                      <td>{{ticket.status}}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
-            <flash-messages></flash-messages>
-            <div class="hp-section">
-                <h2>Select Payment Method</h2> 
-                <hr>
-              <div class="row">
-                <div class="col-md-4">                  
-                  <ul class="list-group">
-                      <li class="list-group-item" (click)="showMpesaWidget()"><img class="pay-icon" src="/assets/img/portfolios/logo/mpesa.png" alt="" srcset=""></li>
-                      <li class="list-group-item"  (click)="showJamboPayWidget()"><img class="pay-icon" src="/assets/img/portfolios/logo/jambopay.png" alt="" srcset=""></li>
-                      <li class="list-group-item"><img class="pay-icon" src="/assets/img/portfolios/logo/airtel_money.png" alt="" srcset=""></li>                      
-                    </ul>
-                </div>
-                <div class="col-md-8">
-                    <app-mpesa-checkout *ngIf="showMpesa" [mpesaReference]="reference_no"></app-mpesa-checkout> 
-                    <app-wallet-checkout *ngIf="showJamboPay" [mpesaReference]="reference_no"></app-wallet-checkout>
-
-                    <div *ngIf=" !showMpesa && !showJamboPay" class="head-typo typo-com collap-expand book-form inn-com-form">      
-                        <p>Please Select Your Payment Method</p>                        
-                    </div>
-                </div>                
+          </div>
+          <flash-messages></flash-messages>
+          <div class="hp-sec">
+            <h4>Select Payment Method</h4>
+            <div class="row">
+              <div class="col-md-4">
+                <ul class="list-group">
+                  <li class="list-group-item" (click)="showMpesaWidget()"><img class="pay-icon" src="/assets/img/portfolios/logo/mpesa.png"
+                      alt="" srcset=""></li>
+                  <li class="list-group-item">
+                    <form action="https://www.jambopay.com/JPExpress.aspx" target="_blank" method="POST" #form>
+                      <input type="hidden" name="jp_item_type" value="cart" />
+                      <input type="hidden" name="jp_item_name" value="ENA COACH" />
+                      <input type="hidden" name="order_id" [(ngModel)]="reference_no" />
+                      <input type="hidden" name="jp_business" value="info@mobiticket.co.ke" />
+                      <input type="hidden" name="jp_amount_1" [(ngModel)]="ticketCost" />
+                      <input type="hidden" name="jp_amount_2" value="0" />
+                      <input type="hidden" name="jp_amount_5" value="0" />
+                      <input type="hidden" name="jp_payee" value="" />
+                      <input type="hidden" name="jp_shipping" value="MOBITICKET" />
+                      <input type="hidden" name="jp_rurl" value="http://www.enacoach.com/ReservePay?reference_number=MA00194506&payment_status=success" />
+                      <input type="hidden" name="jp_furl" value="http://www.enacoach.com/ReservePay?reference_number=MA00194506&payment_status=failed" />
+                      <input type="hidden" name="jp_curl" value="http://www.enacoach.com" />
+                      <button class="express-btn" type="submit" (click)="form.submit()"><img class="express-img" src="/assets/images/payment.png"
+                          alt="" srcset=""></button>
+                    </form>
+                  </li>
+                  <li class="list-group-item" (click)="showJamboPayWidget()"><img class="pay-icon" src="/assets/img/portfolios/logo/jambopay.png"
+                      alt="" srcset=""></li>
+                  <li class="list-group-item" (click)="expressCheckout()"><img class="pay-icon" src="/assets/img/portfolios/logo/airtel_money.png"
+                      alt="" srcset=""></li>
+                </ul>
               </div>
-            </div>         												
+              <div class="col-md-8">
+                <app-mpesa-checkout *ngIf="showMpesa" [mpesaReference]="reference_no"></app-mpesa-checkout>
+                <app-wallet-checkout *ngIf="showJamboPay" [mpesaReference]="reference_no"></app-wallet-checkout>
+                <div *ngIf=" !showMpesa && !showJamboPay" class="head-typo typo-com collap-expand book-form inn-com-form">
+                  <p>Please Select Your Payment Method</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
         <!--=========================================-->
         <div class="hp-call hp-right-com">
           <div class="hp-call-in"> <img src="/assets/images/icon/dbc4.png" alt="">
-            <h3><span>Need Help. Call us!</span> 041226620</h3> <small>We are available 24/7 Monday to Sunday</small> <a href="#">Call Now</a> </div>
+            <h3><span>Need Help. Call us!</span> 041226620</h3> <small>We are available 24/7 Monday to Sunday</small>
+            <a href="#">Call Now</a>
+          </div>
         </div>
         <!--=========================================-->
-        <!--=========================================-->        
+        <!--=========================================-->
         <!--=========================================-->
         <!--=========================================-->
         <div class="hp-card hp-right-com">
           <div class="hp-card-in">
-            <h3>We Accept</h3> <span>We Accept All Forms Of Payment</span> <img src="/assets/images/payment.png" alt=""> </div>
-        </div>        
+            <h3>We Accept</h3> <span>We Accept All Forms Of Payment</span> <img src="/assets/images/payment.png" alt="">
+          </div>
+        </div>
         <!--=========================================-->
-      </div>
-
       </div>
     </div>
   </div>
+</div>

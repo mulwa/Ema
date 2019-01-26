@@ -39,7 +39,7 @@ export class TickettoprintComponent implements OnInit {
   }
   print(): void {
     let printContents, popupWin;
-    printContents = document.getElementById('rcorners2').innerHTML;
+    printContents = document.getElementById('to-print-content').innerHTML;
     popupWin = window.open();
     popupWin.document.open();
     popupWin.document.write(`

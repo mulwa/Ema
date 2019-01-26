@@ -82,8 +82,7 @@ export class BookingService {
       developer_api_key: api_key,
       action:"generatereferencenumber"
     }
-  return this.http.put<ReferenceRes>(ReferenceNumberUrl,body);
-  
+  return this.http.put<ReferenceRes>(ReferenceNumberUrl,body);  
   }
   getTicketDetails(from:number,to_id:number, travel_date:string,selected_vehicle:number,
     seater:number,selected_seat:number){

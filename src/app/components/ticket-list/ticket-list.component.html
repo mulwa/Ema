@@ -9,7 +9,7 @@
         <th>Travel Date</th>
         <th>Booking Date</th>
         <th>Payment ID</th>
-        <th>Action</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
@@ -21,126 +21,14 @@
         <td>{{ticket.travel_date}}</td>
         <td>{{ticket.payment_date}}</td>
         <td>{{ticket.reference_number}}</td>
+        <td *ngIf="ticket.status =='cancelled'"><a href="#" class="db-not-success">{{ticket.status}}</a></td>
         <td *ngIf="ticket.status =='pending'"><a href="#" class="db-not-success">{{ticket.status}}</a></td>
-        <td *ngIf="ticket.status =='confirmed'"><div (click)="printTicket(ticket)"  class="db-success">Print Ticket</div></td>
+        <td *ngIf="ticket.status =='confirmed'"><div (click)="printTicket(ticket)"  class="db-success">{{ticket.status}}(Print)</div></td>
       </tr>
     </tbody>
-  </table>
-  
+  </table> 
 
-  <div id="rcorners2" hidden="true">
-    <table border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td>
-          <table border="0" cellpadding="0" cellspacing="0">
-            <tr>
-              <td style="background-color:#d9d9d9;">
-                <img src="assets/images/ticket_logo.png" height="70px">
-              </td>
-              <td style="background-color:#d9d9d9; font-family:AmplitudeWide-Book; font-size:10px;">
-                <h1><strong>PO BOX 152 - 40202, Kenya<br />Helpline: 041226620</strong></h1>
-              </td>
-              <td style="background-color:#d9d9d9;">
-                <img src="assets/images/mticket_black.png">
-              </td>
-            </tr>
-          </table>
-        </td>
-        <td style="background-color:#d9d9d9; font-family:AmplitudeWide-Book;">
-          <h2>BUS TICKET</h2>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <table border="0" cellpadding="0" cellspacing="0">
-            <tr>
-              <td>
-                <table border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td style="background-color:none; font-family:AmplitudeWide-Book;">
-                      <h4><small>Passenger name</small><br />SK5704 TONNY OTIENO ABUTO</h4>
-                    </td>
-                    <td style="background-color:none; font-family:AmplitudeWide-Book;">
-                      <h4><small>Vehicle</small><br /><strong>BUS 1: NAIROBI - KISUMU (PRESTIGESHUTTLESNAIROBI)</strong></h4>
-                    </td>
-                    <td style="background-color:none; font-family:AmplitudeWide-Book;">
-                      <h3><small>Date</small><br /><strong>Sun, Dec 23, 2018</strong></h3>
-                    </td>
-                    <td style="background-color:none; font-family:AmplitudeWide-Book;">
-                      <h3><small>Time</small><br /><strong> 08:00</strong></h3>
-                    </td>
-                    <td style="background-color:none; font-family:AmplitudeWide-Book;">
-                      <h3><small>Seat</small><br /><strong>67</strong></h3>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <table border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td style="background-color:none; font-family:AmplitudeWide-Book;">
-                      <h3><small>From</small><br />NAIROBI</h3>
-                    </td>
-                    <td style="background-color:none; font-family:AmplitudeWide-Book;">
-                      <h3><small>To</small><br /><strong>KISUMU</strong></h3>
-                    </td>
-                    <td style="background-color:none; font-family:AmplitudeWide-Book;">
-                      <h3><small>Ticket No</small><br /><strong>1544959775</strong></h3>
-                    </td>
-                    <td style="background-color:none; font-family:AmplitudeWide-Book;">
-                      <h3><small>PNR Locator</small><br /><strong>MA00111487</strong></h3>
-                    </td>
-                    <td style="background-color:none; font-family:AmplitudeWide-Book;">
-                      <h3><small>Fare</small><br /><strong>KES1700.00</strong></h3>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <table border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td style="background-color:none; font-family:AmplitudeWide-Book;">
-                      <h5><small>Issued on</small> <strong>2018-12-17 11:49:37</strong> <small>by</small> <strong></strong></h5>
-                    </td>
-                    <td></td>
-                    <td style="background-color:none; font-family:AmplitudeWide-Book;">
-                      <h5>Please report to the boarding station no later than 30 minutes to departure</h5>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-        </td>
-        <td>
-          <img src="https://chart.googleapis.com/chart?cht=qr&chl=Passenger:SK5704+TONNY+OTIENO+ABUTOVehicle:Bus+1%3A+Nairobi+-+KisumuSeat:67Date:23-12-2018&choe=UTF-8&chs=200x200"
-            height="200px" width="200px">
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <table border="0" cellpadding="0" cellspacing="0">
-            <tr>
-              <td style="background-color:#d9d9d9; font-family:AmplitudeWide-Book; font-size:15px;">
-                <h2><img src="assets/images/have_a_nice_trip.png" height="30px"></h2>
-              </td>
-              <td style="background-color:#d9d9d9; font-family:AmplitudeWide-Book;"></td>
-              <td style="background-color:#d9d9d9; font-family:AmplitudeWide-Book;">
-                <img src="assets/images/payment_methods_powered_by_jambopay.png" height="50px">
-              </td>
-            </tr>
-          </table>
-        </td>
-        <td style="background-color:#d9d9d9; font-family:AmplitudeWide-Book;">
-          <img src="assets/images/powered_by_mobiticket_colour.png" height="40px">
-        </td>
-      </tr>
-    </table>
-  </div>
+  
 
 
   

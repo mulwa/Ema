@@ -1,20 +1,19 @@
 <div class="inn-banner">
   <div class="container">
     <div class="row">
-      <h4>{{traveling_from | uppercase}} TO {{traveling_to | uppercase}} On {{travel_date}}</h4>      
+      <h4>{{traveling_from | uppercase}} TO {{traveling_to | uppercase}} On {{travel_date}}</h4>
     </div>
   </div>
 </div>
 <div class="inn-body-section pad-bot-55">
   <div class="container">
-    <div class="alert alert-info alert-dismissable" *ngIf="availableBuses?.length ==0">
+    <div class="alert alert-info alert-dismissable" *ngIf="no_search_result">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">X</a> <strong>Error!</strong>
       No Vehicles Available Matching Your Query
     </div>
     <app-loading *ngIf="showloading"></app-loading>
-
-    <div class="row" *ngIf="availableBuses?.length > 0">      
-      <div class="room" *ngFor="let bus of availableBuses">
+    <div class="row" *ngIf="availableBuses?.length > 0">
+      <div class="room" *ngFor="let bus of availableBuses">        
         <div class="ribbon ribbon-top-left">
           <span *ngIf="bus.total_seats > 17">Bus</span>
           <span *ngIf="bus.total_seats <= 16">Shuttle</span>
@@ -48,11 +47,12 @@
         </div>
         <!--ROOM BOOKING BUTTON-->
         <div class="r5 r-com">
-          <div class="r2-available" *ngIf="bus.seats_available > 2" >{{bus.seats_available}} seats left</div>
-          <div class="r2-available" *ngIf="bus.seats_available <= 2" >fully booked</div>
-          <a (click)="openBookingPage(bus)" class="inn-room-book">Book</a>
+          <div class="r2-available" *ngIf="bus.seats_available > 2">{{bus.seats_available - 2}} seats left</div>
+          <div class="r2-available" *ngIf="bus.seats_available <= 2">fully booked</div>
+          <a (click)="openBookingPage(bus)" *ngIf="bus.seats_available > 2" class="inn-room-book">Book</a>
         </div>
       </div>
+      <!-- room end -->
     </div>
   </div>
 </div>

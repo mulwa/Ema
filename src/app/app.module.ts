@@ -1,7 +1,7 @@
 import { FoutynineSeaterComponent } from './components/seatsFormat/foutynine-seater/foutynine-seater.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -34,6 +34,8 @@ import { PrintTicketComponent } from './components/print-ticket/print-ticket.com
 import { TicketListComponent } from './components/ticket-list/ticket-list.component';
 import { ComponentsComponent } from './components/components.component';
 import { TickettoprintComponent } from './tickettoprint/tickettoprint.component';
+
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -77,7 +79,7 @@ import { TickettoprintComponent } from './tickettoprint/tickettoprint.component'
     Ng4LoadingSpinnerModule.forRoot(),
     FlashMessagesModule.forRoot() 
   ],
-  providers: [BookingService],
+  providers: [BookingService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

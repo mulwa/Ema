@@ -49,8 +49,6 @@ export class SearchBusComponent implements OnInit {
   }
   onSearch(){
     console.log("search clicked")
-    
-
     this.router.navigate(['/vehiclelist',{from:this.searchForm.get('from').value, to_id:this.searchForm.get('to_id').value, travel_date:this.searchForm.get('travel_date').value}])
   }
 

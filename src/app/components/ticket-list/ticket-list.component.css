@@ -37,3 +37,7 @@
     src: url("../../../assets/fonts/AmplitudeComp-Bold.ttf");
     font-weight: bold;
 }
+.db-success{
+    cursor: pointer;
+    
+}
