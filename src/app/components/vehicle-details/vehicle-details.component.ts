@@ -5,11 +5,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-vehicle-details',
     templateUrl: './vehicle-details.component.html',
-    styleUrls: ['./vehicle-details.component.css']
+    styleUrls: ['./vehicle-details.component.css'],
+    providers: [DatePipe]
 })
 export class VehicleDetailsComponent implements OnInit {
     bookingForm: FormGroup;
@@ -36,6 +38,7 @@ export class VehicleDetailsComponent implements OnInit {
         private activatedRoute: ActivatedRoute,
         private bookingService: BookingService,
         private spinnerService: Ng4LoadingSpinnerService,
+        private datePipe: DatePipe,
         private _flashMessagesService: FlashMessagesService,
         private fb: FormBuilder) {
 
@@ -61,6 +64,7 @@ export class VehicleDetailsComponent implements OnInit {
             this.getVehicleData(this.from_id, this.to_id, this.travel_date.split(',')[0], this.bus_id)
 
         })
+        
     }
     initializeForm() {
         this.bookingForm = this.fb.group({
@@ -202,5 +206,20 @@ export class VehicleDetailsComponent implements OnInit {
         return new Promise(resolve => setTimeout(resolve, ms))
     }
 
+     // converting date to fulldate tuesday,thursday 2019
+  convertDatetofull(date):Date{
+    let dateArray = date.split('-')    
+    return new Date(dateArray[2]+'-'+dateArray[1]+'-'+dateArray[0]+'T00:00:00')
+  }
+//   converts time to 12hrs system
+   timeTo12(time24) {
+    let ts = time24;
+    let H = +ts.substr(0, 2);
+    let h:any = (H % 12) || 12;
+    h = (h < 10)?("0"+h):h;  // leading 0 at the left for 1 digit hours
+    var ampm = H < 12 ? " AM" : " PM";
+    ts = h + ts.substr(2, 3) + ampm;
+    return ts;
+  };
 
 }

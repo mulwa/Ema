@@ -6,7 +6,7 @@
           <div class="hp-section">
             <div class="hp-sub-tit">
               <h4>
-                <span>{{from_city}} to {{to_city}} on {{travel_date}}</span>
+                <span>{{from_city}} to {{to_city}} on {{ convertDatetofull(travel_date.split(',')[0]) | date: 'fullDate'}}</span>
               </h4>              
             </div> 
             <div class="row">
@@ -14,7 +14,7 @@
                     <div class="head-typo typo-com">
                       <h3>{{route}}</h3>
                       <p>Departing from: {{from_city}}</p>
-                      <p>Departing time: {{travel_date}}</p>
+                      <p>Departing time: {{ timeTo12(travel_date.split(',')[1].trim())}}</p>                      
                       </div>
                     <div class="head-typo typo-com">
                        <!-- Generate the seating grid -->
@@ -84,7 +84,7 @@
         <!--=========================================-->
         <div class="hp-call hp-right-com">
           <div class="hp-call-in"> <img src="/assets/images/icon/dbc2.png" alt="">
-            <h3><span>Need Help. Call us!</span> 041226620</h3> <small>We are available 24/7 Monday to Sunday</small> <a href="#">Call Now</a> </div>
+            <h3><span>Need Help. Call us!</span> 041-224-6620</h3> <small>We are available 24/7 Monday to Sunday</small> <a href="#">Call Now</a> </div>
         </div>
         <!--=========================================-->
         <!--=========================================-->        

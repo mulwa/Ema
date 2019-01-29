@@ -25,6 +25,7 @@ export class VehicleListComponent implements OnInit {
   no_search_result: boolean = false;
 
   citiesNotAllowed: any[] = [1]
+  
 
   constructor(private bookService: BookingService,
     private activateRoute: ActivatedRoute,
@@ -45,7 +46,10 @@ export class VehicleListComponent implements OnInit {
       this.travel_date = params['travel_date']
     })
     console.log(`${this.from} ${this.to_id} ${this.travel_date}`)
-    this.getAvailableVehicles()
+    this.getAvailableVehicles()    
+ 
+    // this.travelling_Date = new Date(this.travelling_dateString);
+    console.log('travelling date'+ this.convertDatetofull(this.travel_date).getDate())
   }
   getAvailableVehicles() {
     this.bookService.getAvaliableVehicle(this.from, this.to_id, this.travel_date).subscribe(data => {
@@ -96,6 +100,21 @@ export class VehicleListComponent implements OnInit {
     this.router.navigate(['/vehicledetails', { route: bus.route, from_city: bus.from, to_city: bus.to, from_id: this.from, to_id: this.to_id, id: bus.id, travel_date: bus.departure_time, seater: bus.seats[0].seater }])
 
   }
+  // converting date to fulldate tuesday,thursday 2019
+  convertDatetofull(date):Date{
+    let dateArray = date.split('-')    
+    return new Date(dateArray[2]+'-'+dateArray[1]+'-'+dateArray[0]+'T00:00:00')
+  }
+  //   converts time to 12hrs system
+  timeTo12(time24) {
+    let ts = time24;
+    let H = +ts.substr(0, 2);
+    let h:any = (H % 12) || 12;
+    h = (h < 10)?("0"+h):h;  // leading 0 at the left for 1 digit hours
+    var ampm = H < 12 ? " AM" : " PM";
+    ts = h + ts.substr(2, 3) + ampm;
+    return ts;
+  };
 
 
 
