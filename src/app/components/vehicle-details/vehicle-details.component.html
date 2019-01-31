@@ -6,93 +6,128 @@
           <div class="hp-section">
             <div class="hp-sub-tit">
               <h4>
-                <span>{{from_city}} to {{to_city}} on {{ convertDatetofull(travel_date.split(',')[0]) | date: 'fullDate'}}</span>
-              </h4>              
-            </div> 
+                <span>{{from_city}} to {{to_city}} on {{ convertDatetofull(travel_date.split(',')[0]) | date:
+                  'fullDate'}}</span>
+              </h4>
+            </div>
             <div class="row">
-                <div class="col-md-6">
-                    <div class="head-typo typo-com">
-                      <h3>{{route}}</h3>
-                      <p>Departing from: {{from_city}}</p>
-                      <p>Departing time: {{ timeTo12(travel_date.split(',')[1].trim())}}</p>                      
-                      </div>
-                    <div class="head-typo typo-com">
-                       <!-- Generate the seating grid -->
-                       <app-loading *ngIf="loading"></app-loading>                        
-                        <app-foutynine-seater [available_seats]="seatsFound"  *ngIf="seater == 11 && ! loading" (seatSelectionEvent)="onseatSelection($event)" ></app-foutynine-seater>
-                        <app-eleven-seater [available_seats]="seatsFound" *ngIf="seater == 49 && ! loading" (seatSelectionEvent)="onseatSelection($event)" ></app-eleven-seater>
-                        <app-fiveteene-seater [available_seats]="seatsFound"   *ngIf="seater == 15 && ! loading" (seatSelectionEvent)="onseatSelection($event)"></app-fiveteene-seater>
-                        <app-sixteen-seater [available_seats]="seatsFound"    *ngIf="seater == 16 && ! loading" (seatSelectionEvent)="onseatSelection($event)"></app-sixteen-seater>
-                    </div>
-                  </div>
-                  <div class="col-md-6" *ngIf="selectedSeats.length == 0">
-                    <div class="head-typo typo-com">
-                      <p>Please Select Seat To Book</p>
-                    </div>
-                  </div>
-                  <div class="col-md-6" *ngIf="selectedSeats.length == 6">
-                    <div class="head-typo typo-com">
-                      <p>You Are Only Allowed to Book 6 seats</p>
-                    </div>
-                  </div>
-                  <div class="col-md-6" *ngIf="selectedSeats.length != 0"> 
-                  <flash-messages></flash-messages>	                
-                  <div class="head-typo typo-com">
-                    <form [formGroup]="bookingForm">
-                      <div class="passengerArray" formArrayName="passangers" *ngFor="let item of bookingForm.get('passangers').controls; let i = index;" >
-                        <fieldset [formGroupName]="i">
-                          <legend> <p class="legend-title">Seat {{item.get('selected_seat').value}} Passenger Details</p> </legend>                        
-                      <div class="row">
-                        <div class="input-field col s12">
-                          <input type="text" formControlName="passenger_name"  placeholder="Full name {{seat}}">
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="input-field col s12">
-                          <input type="text" formControlName="phone_number" placeholder="Phone Number">
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="input-field col s12">
-                          <input type="text" formControlName="id_number" placeholder="ID Number">
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="input-field col s12">
-                          <input type="text" formControlName="email_address"  placeholder="Email Address">
-                          <input type="text" formControlName="selected_seat" hidden >
-                        </div>
-                      </div>
-                    </fieldset>
-                    </div>
-                      <div class="row">
-                        <div class="input-field col s12">
-                          <button type="submit" class="form-btn" (click)="seerveSeat()">Book</button>
-                        </div>                        
-                      </div>                    
-                    </form>
-                  </div>
+              <div class="col-md-6">
+                <div class="head-typo typo-com">
+                  <h3>{{route}}</h3>
+                  <p>Departing from: {{from_city}}</p>
+                  <p>Departing time: {{ timeTo12(travel_date.split(',')[1].trim())}}</p>
                 </div>
-            </div>           
+                <div class="head-typo typo-com">
+                  <!-- Generate the seating grid -->
+                  <app-loading *ngIf="loading"></app-loading>
+                  <app-foutynine-seater [available_seats]="seatsFound" *ngIf="seater == 11 && ! loading"
+                    (seatSelectionEvent)="onseatSelection($event)"></app-foutynine-seater>
+                  <app-eleven-seater [available_seats]="seatsFound" *ngIf="seater == 49 && ! loading"
+                    (seatSelectionEvent)="onseatSelection($event)"></app-eleven-seater>
+                  <app-fiveteene-seater [available_seats]="seatsFound" *ngIf="seater == 15 && ! loading"
+                    (seatSelectionEvent)="onseatSelection($event)"></app-fiveteene-seater>
+                  <app-sixteen-seater [available_seats]="seatsFound" *ngIf="seater == 16 && ! loading"
+                    (seatSelectionEvent)="onseatSelection($event)"></app-sixteen-seater>
+                </div>
+              </div>
+              <div class="col-md-6" *ngIf="selectedSeats.length == 0">
+                <div class="head-typo typo-com">
+                  <p>Please Select Seat To Book</p>
+                </div>
+              </div>
+              <div class="col-md-6" *ngIf="selectedSeats.length == 6">
+                <div class="head-typo typo-com">
+                  <p>You Are Only Allowed to Book 6 seats</p>
+                </div>
+              </div>
+              <div class="col-md-6" *ngIf="selectedSeats.length != 0">
+                <flash-messages></flash-messages>
+                <div class="head-typo typo-com">
+                  <form [formGroup]="bookingForm">
+                    <div class="passengerArray" formArrayName="passangers" *ngFor="let item of bookingForm.get('passangers').controls; let i = index;">
+                      <fieldset [formGroupName]="i">
+                        <legend>
+                          <p class="legend-title">Seat {{item.get('selected_seat').value}} Passenger Details</p>
+                        </legend>
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <input type="text" formControlName="passenger_name" placeholder="Full name {{seat}}">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <input type="text" formControlName="phone_number" placeholder="Phone Number">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <input type="text" formControlName="id_number" placeholder="ID Number">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <input type="text" formControlName="email_address" placeholder="Email Address">
+                            <input type="text" formControlName="selected_seat" hidden>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-2">
+                        <input type="checkbox" class="check-box" [(ngModel)]="isCovered" (change)="InsuranceState(isCovered?'true':'false')" name="insurance" [ngModelOptions]="{standalone: true}" >
+                      </div>
+                      <div class="col-md-6">
+                        <p>Include insurance</p>
+                      </div>
+                      <div class="col-md-4">
+                        <p>Ksh: {{insurance_Price * selectedSeats?.length}}</p>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-2"></div>
+                      <div class="col-md-6">
+                        <p>Total Cost</p>
+                      </div>
+                      <div class="col-md-4">
+                        <p *ngIf="isCovered">Ksh: {{insurance_Price * selectedSeats?.length + seatPrice * selectedSeats?.length}}</p>
+                        <p *ngIf="!isCovered">  Ksh: {{seatPrice * selectedSeats?.length}}</p>
+                      </div>
+                    </div> 
+                    <hr>                  
+
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <button type="submit" class="form-btn" (click)="seerveSeat()">Book</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>        
-          
-          
-        
+        </div>
+
+
+
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4">        
         <!--=========================================-->
         <div class="hp-call hp-right-com">
           <div class="hp-call-in"> <img src="/assets/images/icon/dbc2.png" alt="">
-            <h3><span>Need Help. Call us!</span> 041-224-6620</h3> <small>We are available 24/7 Monday to Sunday</small> <a href="#">Call Now</a> </div>
+            <h3><span>Need Help. Call us!</span> 041-224-6620</h3> <small>We are available 24/7 Monday to Sunday</small>
+            <a href="#">Call Now</a>
+          </div>
         </div>
         <!--=========================================-->
-        <!--=========================================-->        
+        <!--=========================================-->
         <!--=========================================-->
         <!--=========================================-->
         <div class="hp-card hp-right-com">
           <div class="hp-card-in">
-            <h3>We Accept</h3> <span>We Accept All Forms Of Payment</span> <img src="/assets/images/payment.png" alt=""> </div>
+            <h3>We Accept</h3> <span>We Accept All Forms Of Payment</span> <img src="/assets/images/payment.png" alt="">
+          </div>          
         </div>
         <!--=========================================-->
       </div>

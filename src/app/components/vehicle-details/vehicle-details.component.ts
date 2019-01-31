@@ -32,6 +32,10 @@ export class VehicleDetailsComponent implements OnInit {
     loop_counter = 0;
     referenceNumber;
 
+    seatPrice:number;
+    insurance_Price:number = 25;
+    isCovered:boolean=false;
+
 
 
     constructor(private router: Router,
@@ -73,6 +77,9 @@ export class VehicleDetailsComponent implements OnInit {
             passangers: this.fb.array([])
         })
     }
+InsuranceState(event:any){
+    console.log(event)
+}
 
     getVehicleData(from: number, to: number, date: string, vehicle_id: number) {
         this.bookingService.getVehicleDetails(from, to, date, vehicle_id).subscribe(data => {
@@ -138,7 +145,9 @@ export class VehicleDetailsComponent implements OnInit {
     getTicketType(seat: any) {
         console.log("calling get ticket details");
         this.bookingService.getTicketDetails(this.from_id, this.to_id, this.travel_date.split(',')[0], this.bus_id, this.seater, seat).subscribe(data => {
-            this.ticket_type = data.ticket_type[0].id
+            this.ticket_type = data.ticket_type[0].id            
+            this.seatPrice = data.ticket_type[0].fare_per_ticket;
+            console.log('ticket data'+this.seatPrice)
         })
     }
     seerveSeat() {

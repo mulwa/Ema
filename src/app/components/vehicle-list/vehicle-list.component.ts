@@ -54,15 +54,20 @@ export class VehicleListComponent implements OnInit {
   getAvailableVehicles() {
     this.bookService.getAvaliableVehicle(this.from, this.to_id, this.travel_date).subscribe(data => {
       this.showloading = false;
+      console.log('data from api '+JSON.stringify(data.bus[0].departure_time))
       if (data.bus.length > 0) {
         this.traveling_from = data.bus[0].from;
         this.traveling_to = data.bus[0].to;
 
         data.bus.forEach((x) => {
-          let deptureTime = x.departure_time.split(',')[1];
-          console.log('Time Difference' + this.calculateTimeDiff(this.currentTime, deptureTime))
-          if (parseInt(deptureTime) != parseInt('00:00') && !this.citiesNotAllowed.includes(x.id) && this.calculateTimeDiff(this.currentTime, deptureTime) < 1) {
+          console.log('depture time' +x.departure_time)
+          let deptureTime = x.departure_time.split(',')[1].trim();
+          
+          console.log('Time Difference inside function' +this.calculateTimeDiff(this.currentTime,deptureTime))
+          if (parseInt(deptureTime) != parseInt('00:00') && !this.citiesNotAllowed.includes(x.id) && this.calculateTimeDiff(this.currentTime, deptureTime) > 0) {
             this.availableBuses.push(x)
+            console.log('current time inside function'+this.currentTime)
+          console.log('depature time inside function'+deptureTime)
           }
         }) //end foreach
 
@@ -83,7 +88,9 @@ export class VehicleListComponent implements OnInit {
       cTime = cTime.split(":");
       var startDate = new Date(0, 0, 0, departureTime[0], departureTime[1], 0);
       var endDate = new Date(0, 0, 0, cTime[0], cTime[1], 0);
-      var diff = endDate.getTime() - startDate.getTime();
+      var diff = startDate.getTime() - endDate.getTime();
+
+      console.log('time difference'+endDate.getTime()+'And'+startDate.getTime()+'is'+diff)
 
       hours = Math.floor(diff / 1000 / 60 / 60);
       diff -= hours * 1000 * 60 * 60;
@@ -91,7 +98,7 @@ export class VehicleListComponent implements OnInit {
       return hours;
 
     } else {
-      return 0;
+      return 1;
     }
     // return (hours < 9 ? "0" : "") + hours + ":" + (minutes < 9 ? "0" : "") + minutes;
   }

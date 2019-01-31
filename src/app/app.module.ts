@@ -17,7 +17,7 @@ import { FleetComponent } from './components/fleet/fleet.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { AboutComponent } from './components/about/about.component';
 import { OfficesComponent } from './components/offices/offices.component';
-import { MzInputModule, MzSelectModule } from 'ngx-materialize';
+import { MzInputModule, MzSelectModule,MzCheckboxModule } from 'ngx-materialize';
 import { BookingService } from './services/booking.service';
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
 import { VehicleDetailsComponent } from './components/vehicle-details/vehicle-details.component';
@@ -75,6 +75,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     FormsModule,
     MzInputModule,
     MzSelectModule,
+    MzCheckboxModule,
     AppRoutingModule,
     Ng4LoadingSpinnerModule.forRoot(),
     FlashMessagesModule.forRoot() 

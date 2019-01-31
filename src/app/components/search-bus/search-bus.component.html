@@ -30,7 +30,7 @@
                   formControlName="travel_date">
                       <option *ngFor="let dates of traveling_dates" [value]="dates.name">{{dates.name}}</option>
                   </select>                  
-                </mz-select-container>                  
+                </mz-select-container>                                
                 <div class="input-field col s12 m4 l2">                  
                   <button type="submit" class="form-btn" [disabled]="!searchForm.valid" >Search</button>
                  </div>
