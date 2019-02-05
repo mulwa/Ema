@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { DatePipe } from '@angular/common';
+import { InsuranceService } from 'src/app/services/insurance.service';
 
 @Component({
     selector: 'app-vehicle-details',
@@ -31,10 +32,14 @@ export class VehicleDetailsComponent implements OnInit {
     ticket_type: any;
     loop_counter = 0;
     referenceNumber;
+    
 
     seatPrice:number;
     insurance_Price:number = 25;
     isCovered:boolean=false;
+
+    username_pattern = "^([a-zA-Z]{2,}\\s[a-zA-z]{1,}'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]{1,})?)";
+    phoneNo_pattern = "^[0-9]{10}"
 
 
 
@@ -42,7 +47,8 @@ export class VehicleDetailsComponent implements OnInit {
         private activatedRoute: ActivatedRoute,
         private bookingService: BookingService,
         private spinnerService: Ng4LoadingSpinnerService,
-        private datePipe: DatePipe,
+        private datePipe: DatePipe,        
+        private insuranceService:InsuranceService,
         private _flashMessagesService: FlashMessagesService,
         private fb: FormBuilder) {
 
@@ -69,6 +75,7 @@ export class VehicleDetailsComponent implements OnInit {
 
         })
         
+        
     }
     initializeForm() {
         this.bookingForm = this.fb.group({
@@ -77,9 +84,24 @@ export class VehicleDetailsComponent implements OnInit {
             passangers: this.fb.array([])
         })
     }
-InsuranceState(event:any){
-    console.log(event)
-}
+    InsuranceState(event:any){
+        console.log('insurance State'+event) 
+        if(event =='true'){
+            this.asyncForEach(this.passanger.value, res =>{
+                console.log(res.id_number)                
+                let first_name = res.passenger_name.split(" ")[0];
+                let last_name = res.passenger_name.split(" ")[1];
+                let idNo = res.id_number;
+                let phoneNumber = res.phone_number;
+                let email_address = res.email_address;
+
+                this.checkIfIsRegistered(idNo,first_name,last_name,phoneNumber,email_address)                
+            })
+            
+        }else{
+            console.log('cover not needed')
+        }       
+    }
 
     getVehicleData(from: number, to: number, date: string, vehicle_id: number) {
         this.bookingService.getVehicleDetails(from, to, date, vehicle_id).subscribe(data => {
@@ -122,9 +144,9 @@ InsuranceState(event:any){
 
     createItem(seatNo): FormGroup {
         return this.fb.group({
-            phone_number: ['', Validators.minLength(10)],
+            phone_number: ['',[Validators.required,Validators.pattern(this.phoneNo_pattern)]],
             id_number: [''],
-            passenger_name: ['', Validators.required],
+            passenger_name: ['',[Validators.required,Validators.pattern(this.username_pattern)]],
             email_address: [''],
             selected_seat: seatNo,
             insurance_charge: '',
@@ -135,6 +157,8 @@ InsuranceState(event:any){
     get passanger() {
         return this.bookingForm.get('passangers') as FormArray;
     }
+    
+   
     getReferenceNumber() {
         this.bookingService.generateReferenceNumber().subscribe(data => {
             this.referenceNumber = data.reference_number;
@@ -151,10 +175,18 @@ InsuranceState(event:any){
         })
     }
     seerveSeat() {
-        this.spinnerService.show()
+        this.spinnerService.show()        
         let numOfPassangers = this.bookingForm.get('passangers').value.length;
         console.log(`Booking details ${numOfPassangers} Ticket Type ${this.ticket_type}`)
         this.asyncForEach(this.passanger.value, (res) => {
+            console.log('id number Entered'+res.id_number)
+            if(this.isCovered){
+                // check if id number is provided
+                
+            }else {
+                console.log('Insurance cover not needed')
+
+            }
 
             let from_city = this.from_id
             let to_city = this.to_id
@@ -177,8 +209,7 @@ InsuranceState(event:any){
                 selected_ticket_type, selected_seat, payment_method, phone_number, passenger_name, email_address,
                 id_number, insurance_charge, served_by, amount_charged, reference_number).subscribe(data => {
                     this.loop_counter += 1;
-                    console.log("sucess loop counter", this.loop_counter, "no pass", numOfPassangers)
-                    console.log(data)
+                    console.log("sucess loop counter", this.loop_counter, "no pass", numOfPassangers)                    
                     this.spinnerService.hide()
                     if (this.loop_counter == numOfPassangers) {
                         this.navigateToPayment()
@@ -204,9 +235,40 @@ InsuranceState(event:any){
 
         this.bookingForm.reset();
     }
+    public checkIfIsRegistered(idNumber:any, firstName, lastName,phoneNo, emailAddress){        
+            console.log('search if user is registered')
+            this.insuranceService.checkIfRegistered(idNumber).subscribe(data =>{
+                // console.log(data)
+                if(data.response_code == 0){
+                    // user is already registered                    
+                   console.log('User already registered')
+                }else{
+                    console.log('user not registered')
+                //  this.registerUser(firstName,lastName,phoneNo,idNumber,emailAddress)
+                    
+                    
+                }
+            })
+                  
+
+    }
+    private registerUser(firstName,lastname, idNo, phoneNo, emailAddress){
+        console.log('registering user')
+        this.insuranceService.registerNewUser(firstName,lastname, idNo,phoneNo,emailAddress)
+        .subscribe(data =>{
+            if(data.responseCode == 0){
+                console.log(data.responseMessage)
+
+            }else{
+                console.log('failed to register user')
+                console.log(data)
+            }
+        })
+
+    }
     public async  asyncForEach(array, callback) {
         for (let index = 0; index < array.length; index++) {
-            await this.waiting(3000)
+            await this.waiting(1000)
             await callback(array[index], index, array);
 
         }

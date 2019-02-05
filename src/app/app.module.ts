@@ -36,6 +36,7 @@ import { ComponentsComponent } from './components/components.component';
 import { TickettoprintComponent } from './tickettoprint/tickettoprint.component';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { InsuranceService } from './services/insurance.service';
 
 
 @NgModule({
@@ -80,7 +81,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     Ng4LoadingSpinnerModule.forRoot(),
     FlashMessagesModule.forRoot() 
   ],
-  providers: [BookingService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [BookingService,InsuranceService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

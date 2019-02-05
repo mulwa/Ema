@@ -18,7 +18,7 @@ export class AppComponent {
   constructor(private router: Router) {
     this.router.events.subscribe((event: RouterEvent) => {
       this.navigationInterceptor(event);
-      console.log( event );
+     
     });
    }
 

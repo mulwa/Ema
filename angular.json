@@ -23,9 +23,9 @@
               "src/assets"
             ],
             "styles": [ 
-              "src/assets/css/bootstrap.css",
-              "src/assets/css/style.css",             
-              "src/assets/css/materialize.css",                            
+              "src/assets/css/materialize.css",  
+              "src/assets/css/style.css", 
+              "src/assets/css/bootstrap.css",           
               "src/assets/css/responsive.css",                           
               "src/styles.css"
             ],

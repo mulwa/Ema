@@ -23,13 +23,13 @@ export class InsuranceService {
      }
      return this.http.put<searchUserResponse>(insuranceUrl,body)
    }
-   registerNewUser(firstName, middle_name, lastname, idNo, phoneNo, emailAddress){
+   registerNewUser(firstName,lastname, idNo, phoneNo, emailAddress){
     let body = {
       developer_username:username,
       developer_api_key:api_key,
       action: "newuser",
       first_name:firstName,
-      middle_name:middle_name,
+      middle_name:"",
       last_name:lastname,
       id_number: idNo,
       phone_number:phoneNo,

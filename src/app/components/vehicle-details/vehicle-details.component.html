@@ -51,55 +51,81 @@
                         </legend>
                         <div class="row">
                           <div class="input-field col s12">
-                            <input type="text" formControlName="passenger_name" placeholder="Full name {{seat}}">
+                            <input type="text" formControlName="passenger_name" placeholder="Full name (eg John Doe) {{seat}}">
                           </div>
+                        </div>
+                        <div class="error" *ngIf="bookingForm.controls.passangers.controls[i].controls.passenger_name.errors">
+                          <span *ngIf="bookingForm.controls.passangers.controls[i].controls.passenger_name.errors.required"
+                            class="required-star error-msg"> Full name is requred </span>
+                          <span *ngIf="bookingForm.controls.passangers.controls[i].controls.passenger_name.errors.pattern"
+                            class="error-msg">Please Provide Full Name                            
+                          </span>
                         </div>
                         <div class="row">
                           <div class="input-field col s12">
-                            <input type="text" formControlName="phone_number" placeholder="Phone Number">
+                            <input type="text" formControlName="phone_number" placeholder="Phone Number (0707200314) ">
                           </div>
                         </div>
+                        <div class="error" *ngIf="bookingForm.controls.passangers.controls[i].controls.phone_number.errors">
+                          <!-- <span *ngIf="bookingForm.controls.passangers.controls[i].controls.phone_number.errors.required"
+                            class="required-star"> * </span> -->
+                        </div>
+                        <span *ngIf="bookingForm.controls.passangers.controls[i].controls.phone_number.errors"
+                            class="error-msg">Provide Valid Phone Number                                                   
+                          </span>
                         <div class="row">
                           <div class="input-field col s12">
                             <input type="text" formControlName="id_number" placeholder="ID Number">
                           </div>
                         </div>
+                        <!-- <div class="error">Error Display</div> -->
                         <div class="row">
                           <div class="input-field col s12">
                             <input type="text" formControlName="email_address" placeholder="Email Address">
                             <input type="text" formControlName="selected_seat" hidden>
                           </div>
                         </div>
+                        <!-- <div class="error">Error Display</div> -->
                       </fieldset>
                     </div>
                     <hr>
-                    <div class="row">
-                      <div class="col-md-2">
-                        <input type="checkbox" class="check-box" [(ngModel)]="isCovered" (change)="InsuranceState(isCovered?'true':'false')" name="insurance" [ngModelOptions]="{standalone: true}" >
+                    <!-- <div class="row" *ngIf="!bookingForm.valid">
+                      <div class="col-md-12">
+                        <div class="alert alert-info alert-dismissable">
+                          <a href="#" class="close" data-dismiss="alert" aria-label="close">X</a>
+                          Provide Full Details (Id Number, FullName, Phone Number) For Insurance Option
+                        </div>
                       </div>
-                      <div class="col-md-6">
+                    </div> -->
+                    <!-- <div class="row" *ngIf="bookingForm.valid">
+                      <div class="col-md-2 col-sm-2">
+                        <input type="checkbox" class="check-box" [(ngModel)]="isCovered" (change)="InsuranceState(isCovered?'true':'false')"
+                          name="insurance" [ngModelOptions]="{standalone: true}">
+                      </div>
+                      <div class="col-md-6 col-sm-6 check-box-text">
                         <p>Include insurance</p>
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-4 col-md-4 check-box-text">
                         <p>Ksh: {{insurance_Price * selectedSeats?.length}}</p>
+                      </div>
+                    </div> -->
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-2 col-sm-2"></div>
+                      <div class="col-md-6 col-sm-6">
+                        <p>Total Cost</p>
+                      </div>
+                      <div class="col-md-4 col-sm-4">
+                        <p *ngIf="isCovered">Ksh: {{insurance_Price * selectedSeats?.length + seatPrice *
+                          selectedSeats?.length}}</p>
+                        <p *ngIf="!isCovered"> Ksh: {{seatPrice * selectedSeats?.length}}</p>
                       </div>
                     </div>
                     <hr>
-                    <div class="row">
-                      <div class="col-md-2"></div>
-                      <div class="col-md-6">
-                        <p>Total Cost</p>
-                      </div>
-                      <div class="col-md-4">
-                        <p *ngIf="isCovered">Ksh: {{insurance_Price * selectedSeats?.length + seatPrice * selectedSeats?.length}}</p>
-                        <p *ngIf="!isCovered">  Ksh: {{seatPrice * selectedSeats?.length}}</p>
-                      </div>
-                    </div> 
-                    <hr>                  
 
                     <div class="row">
                       <div class="input-field col s12">
-                        <button type="submit" class="form-btn" (click)="seerveSeat()">Book</button>
+                        <button type="submit" class="form-btn" (click)="seerveSeat()" [disabled]="!bookingForm.valid" >Book</button>
                       </div>
                     </div>
                   </form>
@@ -112,7 +138,7 @@
 
 
       </div>
-      <div class="col-md-4">        
+      <div class="col-md-4">
         <!--=========================================-->
         <div class="hp-call hp-right-com">
           <div class="hp-call-in"> <img src="/assets/images/icon/dbc2.png" alt="">
@@ -126,8 +152,9 @@
         <!--=========================================-->
         <div class="hp-card hp-right-com">
           <div class="hp-card-in">
-            <h3>We Accept</h3> <span>We Accept All Forms Of Payment</span> <img src="/assets/images/payment.png" alt="">
-          </div>          
+            <h3>We Accept</h3> <span>We Accept All Forms Of Payment</span>
+            <img src="/assets/img/portfolios/logo/visa_mastercard.png" class="pay-icon1" alt="payment">
+          </div>
         </div>
         <!--=========================================-->
       </div>

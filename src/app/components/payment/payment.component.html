@@ -39,8 +39,6 @@
             <div class="row">
               <div class="col-md-4">
                 <ul class="list-group">
-                  <li class="list-group-item" (click)="showMpesaWidget()"><img class="pay-icon" src="/assets/img/portfolios/logo/mpesa.png"
-                      alt="" srcset=""></li>
                   <li class="list-group-item">
                     <form action="https://www.jambopay.com/JPExpress.aspx" target="_blank" method="POST" #form>
                       <input type="hidden" name="jp_item_type" value="cart" />
@@ -55,15 +53,16 @@
                       <input type="hidden" name="jp_rurl" value="http://www.enacoach.com/ReservePay?reference_number=MA00194506&payment_status=success" />
                       <input type="hidden" name="jp_furl" value="http://www.enacoach.com/ReservePay?reference_number=MA00194506&payment_status=failed" />
                       <input type="hidden" name="jp_curl" value="http://www.enacoach.com" />
-                      <button class="express-btn" type="submit" (click)="form.submit()"><img class="express-img" src="/assets/images/payment.png"
+                      <button class="express-btn" type="submit" (click)="form.submit()"><img class="express-img" src="/assets/img/portfolios/logo/visa_mastercard.png"
                           alt="" srcset=""></button>
                     </form>
                   </li>
+                  <li class="list-group-item" (click)="showMpesaWidget()"><img class="pay-icon" src="/assets/img/portfolios/logo/lipa-na-mpesa.jpg"
+                      alt="" srcset=""></li>
                   <li class="list-group-item" (click)="showJamboPayWidget()"><img class="pay-icon" src="/assets/img/portfolios/logo/jambopay.png"
-                      alt="" srcset=""></li>
-                  <li class="list-group-item" (click)="expressCheckout()"><img class="pay-icon" src="/assets/img/portfolios/logo/airtel_money.png"
-                      alt="" srcset=""></li>
-                </ul>
+                      alt="" srcset="">
+                  </li>
+                </ul>                
               </div>
               <div class="col-md-8">
                 <app-mpesa-checkout *ngIf="showMpesa" [mpesaReference]="reference_no"></app-mpesa-checkout>
@@ -79,8 +78,8 @@
       <div class="col-md-4">
         <!--=========================================-->
         <div class="hp-call hp-right-com">
-          <div class="hp-call-in"> <img src="/assets/images/icon/dbc4.png" alt="">
-            <h3><span>Need Help. Call us!</span> 041226620</h3> <small>We are available 24/7 Monday to Sunday</small>
+          <div class="hp-call-in"> <img src="/assets/images/icon/dbc2.png" alt="">
+            <h3><span>Need Help. Call us!</span> 041-224-6620</h3> <small>We are available 24/7 Monday to Sunday</small>
             <a href="#">Call Now</a>
           </div>
         </div>
@@ -90,7 +89,8 @@
         <!--=========================================-->
         <div class="hp-card hp-right-com">
           <div class="hp-card-in">
-            <h3>We Accept</h3> <span>We Accept All Forms Of Payment</span> <img src="/assets/images/payment.png" alt="">
+            <h3>We Accept</h3> <span>We Accept All Forms Of Payment</span> <img class="pay-icon" src="/assets/img/portfolios/logo/visa_mastercard.png"
+              alt="">
           </div>
         </div>
         <!--=========================================-->

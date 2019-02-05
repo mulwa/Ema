@@ -18,11 +18,12 @@ export class BookingComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
      private bookService:BookingService, private router:Router) { 
-      this.getCities();
+     
 
   }
 
   ngOnInit() {
+    this.getCities();
     this.initializeForm()    
     this.getTravelingDates();
   }
