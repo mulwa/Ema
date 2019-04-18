@@ -121,7 +121,7 @@ export class VehicleListComponent implements OnInit {
     var ampm = H < 12 ? " AM" : " PM";
     ts = h + ts.substr(2, 3) + ampm;
     return ts;
-  };
+  }
 
 
 
