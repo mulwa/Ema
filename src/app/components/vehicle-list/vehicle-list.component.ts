@@ -24,7 +24,7 @@ export class VehicleListComponent implements OnInit {
   arrivalTime: any;
   no_search_result: boolean = false;
 
-  citiesNotAllowed: any[] = [1]
+  citiesNotAllowed: any[] = []
   
 
   constructor(private bookService: BookingService,
@@ -95,7 +95,11 @@ export class VehicleListComponent implements OnInit {
       hours = Math.floor(diff / 1000 / 60 / 60);
       diff -= hours * 1000 * 60 * 60;
       var minutes = Math.floor(diff / 1000 / 60);
+
+      console.log('minutes difference'+minutes)
+      console.log('hour difference'+minutes)
       return hours;
+      // return minutes;
 
     } else {
       return 1;
